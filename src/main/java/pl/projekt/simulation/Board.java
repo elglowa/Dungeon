@@ -49,45 +49,31 @@ public class Board implements IRandom {
         switch (randNbr) {
             case 0 :
                 return new Iron();
-            break;
             case 1 :
                 return new Diamond();
-            break;
             case 2 :
                 return new Stone();
-            break;
             case 3 :
                 return new Wood();
-            break;
             default:
-                System.out.println("nie dziala");
+                throw new IllegalArgumentException();
         }
     }
 
-
-
-    @Override
-    public void move() {
-
-    }
     //return potrzebny koncowy jakis
     public AbstractMonster createRandomMob(){
         int randNbr = getRandomNumberInRange(0,3);
         switch (randNbr) {
             case 0 :
                 return new Dwarf();
-                break;
             case 1 :
                 return new Elf();
-                break;
             case 2 :
                 return new Minotaur();
-                break;
             case 3 :
                 return new Orc();
-                break;
             default:
-                System.out.println("nie dziala");
+                throw new IllegalArgumentException();
         }
     }
 
@@ -110,6 +96,7 @@ public class Board implements IRandom {
             playBoard[positionX][positionY] = monster[i];
         }
     }
+
     @Override
     public void setMaterialPosition() {
         int howMuchMaterial = (size - mobs)/2;
@@ -128,6 +115,11 @@ public class Board implements IRandom {
             }while (playBoard[positionX][positionY] != null);
             playBoard[positionX][positionY] = material[i];
         }
+    }
+
+    @Override
+    public void move() {
+
     }
 }
 
