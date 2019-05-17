@@ -18,7 +18,7 @@ public class Board implements IRandom {
     private int size = 0;
     private int mobs = 0;
 
-    Board(int sizem, int mobs){
+    public Board(int sizem, int mobs){
         this.size = size;
         this.mobs = mobs;
     }
@@ -91,13 +91,6 @@ public class Board implements IRandom {
         }
     }
 
-    public int findEmptyPlace(){
-        do{
-
-        }while (playBoard[getPositionX()][getPositionY()] != null);
-
-        return 0;
-    }
     @Override
     public void setMobPosition(){
 
