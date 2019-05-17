@@ -119,6 +119,16 @@ public class Board implements IRandom {
 
     @Override
     public void move() {
+        int iloscZywychMobow = 0;
+        //Sprawdzam ilosc zywych mobow
+        for(int i = 0 ; i < size ; i++){
+            for (int j = 0 ; j < size ; j++){
+                if(playBoard[i][j] instanceof AbstractMonster)
+                    iloscZywychMobow++;
+            }
+        }
+
+
 
     }
 }
