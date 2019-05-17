@@ -2,15 +2,15 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
-public class Sword extends AbstractItem
+public class Jewelery extends AbstractItem
 {
     private AbstractMonster Mob1;
     private double DamagePoints=4;
     private double ArmourPoints=0;
 
-    public Sword(){}
+    public Jewelery(){}
 
-    public  Sword(double armourPoints,double damagePoints,AbstractMonster mob1)
+    public Jewelery(double damagePoints,double armourPoints,AbstractMonster mob1)
     {
         this.ArmourPoints=armourPoints;
         this.DamagePoints=damagePoints;
@@ -18,17 +18,17 @@ public class Sword extends AbstractItem
     }
 
     @Override
-    public void addAttack() {
-        Mob1.addAttack(Mob1.getAttack()*0.05);
+    public void addArmour() {
+        Mob1.addArmour(Mob1.getDefence()*0.02);
     }
 
     @Override
     public void addHP() {
-
+        Mob1.addHP(Mob1.getHealth()*0.03);
     }
 
     @Override
-    public void addArmour() {
-
+    public void addAttack() {
+        Mob1.addAttack(Mob1.getAttack()*0.02);
     }
 }

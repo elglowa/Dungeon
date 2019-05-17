@@ -23,7 +23,7 @@ public class Axe extends AbstractItem
 
     @Override
     public void addArmour() {
-        Mob1.addArmour(Mob1.getDefence()*(-0.04));
+        Mob1.addArmour(Mob1.getDefence()*(-0.03));
     }
 
     @Override
