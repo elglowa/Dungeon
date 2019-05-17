@@ -6,9 +6,9 @@ public class Minotaur extends AbstractMonster{
     private double attacPoints = 5;
 
 
-    Minotaur(){ }
+    public Minotaur(){ }
 
-    Minotaur(double healthPoints, double defencePoints, double attacPoints){
+    public Minotaur(double healthPoints, double defencePoints, double attacPoints){
         this.attacPoints = attacPoints;
         this.defencePoints = defencePoints;
         this.healthPoints = healthPoints;

@@ -10,9 +10,9 @@ public class Elf extends AbstractMonster{
     private double attacPoints = 5;
 
 
-    Elf(){ }
+    public Elf(){ }
 
-    Elf(double healthPoints, double defencePoints, double attacPoints){
+    public Elf(double healthPoints, double defencePoints, double attacPoints){
         this.attacPoints = attacPoints;
         this.defencePoints = defencePoints;
         this.healthPoints = healthPoints;

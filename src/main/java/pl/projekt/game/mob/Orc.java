@@ -6,9 +6,9 @@ public class Orc extends AbstractMonster{
     private double attacPoints = 5;
 
 
-    Orc(){ }
+    public Orc(){ }
 
-    Orc(double healthPoints, double defencePoints, double attacPoints){
+    public Orc(double healthPoints, double defencePoints, double attacPoints){
         this.attacPoints = attacPoints;
         this.defencePoints = defencePoints;
         this.healthPoints = healthPoints;
