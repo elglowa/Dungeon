@@ -15,22 +15,24 @@ import pl.projekt.game.mob.Orc;
 import java.util.Random;
 
 public class Board implements IRandom {
-    private int size ;
-    private int mobs ;
-    public Board(){ }
+    private int size;
+    private int mobs;
+
+    public Board() {
+    }
 
     public Board(int size, int mobs) {
         this.size = size;
         this.mobs = mobs;
     }
 
-        private Object[][] playBoard;
-    public void createArray(){
-        if(size != 0 ){
+    private Object[][] playBoard;
+
+    public void createArray() {
+        if (size != 0) {
             playBoard = new Object[size][size];
         }
     }
-
 
 
     //losowanie numeru z listy
@@ -97,8 +99,8 @@ public class Board implements IRandom {
             int positionX;
             int positionY;
             do {
-                positionX = getRandomNumberInRange(0 , size -1);
-                positionY = getRandomNumberInRange(0, size -1) ;
+                positionX = getRandomNumberInRange(0, size - 1);
+                positionY = getRandomNumberInRange(0, size - 1);
 
             } while (playBoard[positionX][positionY] != null);
             playBoard[positionX][positionY] = monster[i];
@@ -133,11 +135,12 @@ public class Board implements IRandom {
         //Sprawdzam ilosc zywych mobow
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (playBoard[i][j] instanceof AbstractMonster)
+                if (playBoard[i][j] instanceof AbstractMonster) {
                     miejcaNaKtorychMobyX[iloscZywychMobow] = i;
-                miejcaNaKtorychMobyY[iloscZywychMobow] = j;
-                iloscZywychMobow++;
-                System.out.println(iloscZywychMobow);
+                    miejcaNaKtorychMobyY[iloscZywychMobow] = j;
+                    iloscZywychMobow++;
+                    System.out.println(iloscZywychMobow);
+                }
             }
         }
         for (int i = 0; i < iloscZywychMobow; i++) {
@@ -150,63 +153,100 @@ public class Board implements IRandom {
                     playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
 
                     playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
-                } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
+                }
+                else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
                     playBoard[newPositionX][newPositionX] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
                     //TODO dodac cos co bedzie dodawalo materialy
-                } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
+                }
+                else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
 
-                    //Jesli sa tej samej klasy
-                    if (playBoard[newPositionX][newPositionY].getClass()
-                            == playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass()) {
+                    if (playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] != null
+                            && playBoard[newPositionX][newPositionY] != null) {
+                        //Jesli sa tej samej klasy
+                        if (playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass()
+                                == playBoard[newPositionX][newPositionY].getClass()) {
 
-                        AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
-                        AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                            AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
+                            AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
 
-                        double hp = a.getHealth() + b.getHealth();
-                        double attc = a.getAttack() + b.getAttack();
-                        double dff = a.getDefence() + b.getDefence();
+                            double hp = a.getHealth() + b.getHealth();
+                            double attc = a.getAttack() + b.getAttack();
+                            double dff = a.getDefence() + b.getDefence();
 
-                        String name = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass().getName();
-
-                        playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
-
-                        switch (name) {
-                            case "Elf":
-                                playBoard[newPositionX][newPositionY] = new Elf(hp, dff, attc);
-                            case "Dwarf":
-                                playBoard[newPositionX][newPositionY] = new Dwarf(hp, dff, attc);
-                            case "Minotaur":
-                                playBoard[newPositionX][newPositionY] = new Minotaur(hp, dff, attc);
-                            case "Orc":
-                                playBoard[newPositionX][newPositionY] = new Orc(hp, dff, attc);
-                            default:
-                                throw new IllegalArgumentException();
-                        }
+                            String name = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass().getName().toString();
 
 
-                    } else {
-                        AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
-                        AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                            playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
 
-                        if (a.getAttack() > b.getAttack()) {
-                            if (a.getDefence() + a.getHealth() > b.getDefence() + b.getHealth()) {
-                                playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
-                                playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
-                            } else {
-                                playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                            switch (name) {
+                                case "pl.projekt.game.mob.Elf":
+                                    playBoard[newPositionX][newPositionY] = new Elf(hp, dff, attc);
+                                    break;
+                                case "pl.projekt.game.mob.Dwarf":
+                                    playBoard[newPositionX][newPositionY] = new Dwarf(hp, dff, attc);
+                                    break;
+                                case "pl.projekt.game.mob.Minotaur":
+                                    playBoard[newPositionX][newPositionY] = new Minotaur(hp, dff, attc);
+                                    break;
+                                case "pl.projekt.game.mob.Orc":
+                                    playBoard[newPositionX][newPositionY] = new Orc(hp, dff, attc);
+                                    break;
+                                default:
+                                    throw new IllegalArgumentException();
                             }
-                        } else {
-                            if (b.getHealth() + b.getDefence() > a.getHealth() + a.getDefence()) {
-                                playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
-                            } else {
-                                playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
 
+                        } else {
+                            AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
+                            AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+
+                            if (a.getAttack() > b.getAttack()) {
+                                if (a.getDefence() + a.getHealth() > b.getDefence() + b.getHealth()) {
+                                    playBoard[newPositionX][newPositionY]
+                                            = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+
+                                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                                }
+                                else {
+                                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                                }
+                            }
+                            else {
+                                if (b.getHealth() + b.getDefence() > a.getHealth() + a.getDefence()) {
+                                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                                }
+                                else {
+                                    playBoard[newPositionX][newPositionY]
+                                            = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+
+                                }
                             }
                         }
                     }
                 }
             }
         }
+    }
+    void wypisz(){
+        int iloscZywychMobow = 0;
+        int miejcaNaKtorychMobyX[] = new int[mobs];
+        int miejcaNaKtorychMobyY[] = new int[mobs];
+        //Sprawdzam ilosc zywych mobow
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (playBoard[i][j] instanceof AbstractMonster) {
+                    miejcaNaKtorychMobyX[iloscZywychMobow] = i;
+                    System.out.println(miejcaNaKtorychMobyX[i]);
+                    miejcaNaKtorychMobyY[iloscZywychMobow] = j;
+                    System.out.println(miejcaNaKtorychMobyY[i]);
+                    System.out.println();
+                    iloscZywychMobow++;
+                    System.out.println("MOBY");
+                    System.out.println(iloscZywychMobow);
+                    System.out.println("_____");
+                }
+            }
+        }
+
     }
 }
 
