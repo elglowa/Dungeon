@@ -15,16 +15,22 @@ import pl.projekt.game.mob.Orc;
 import java.util.Random;
 
 public class Board implements IRandom {
-    private int size = 0;
-    private int mobs = 0;
+    private int size ;
+    private int mobs ;
+    public Board(){ }
 
-    public Board(int sizem, int mobs){
+    public Board(int size, int mobs) {
         this.size = size;
         this.mobs = mobs;
     }
 
+        private Object[][] playBoard;
+    public void createArray(){
+        if(size != 0 ){
+            playBoard = new Object[size][size];
+        }
+    }
 
-    public Object [][] playBoard = new Object[size][size];
 
 
     //losowanie numeru z listy
@@ -38,22 +44,24 @@ public class Board implements IRandom {
 
     @Override
     public int getPositionX() {
-        return getRandomNumberInRange(0, size-1);
+        return getRandomNumberInRange(0, size - 1);
 
     }
+
     public int getPositionY() {
-        return getRandomNumberInRange(0, size-1);
+        return getRandomNumberInRange(0, size - 1);
     }
-    public AbstractMaterials randomMaterial(){
-        int randNbr = getRandomNumberInRange(0,3);
+
+    public AbstractMaterials randomMaterial() {
+        int randNbr = getRandomNumberInRange(0, 3);
         switch (randNbr) {
-            case 0 :
+            case 0:
                 return new Iron();
-            case 1 :
+            case 1:
                 return new Diamond();
-            case 2 :
+            case 2:
                 return new Stone();
-            case 3 :
+            case 3:
                 return new Wood();
             default:
                 throw new IllegalArgumentException();
@@ -61,16 +69,16 @@ public class Board implements IRandom {
     }
 
     //return potrzebny koncowy jakis
-    public AbstractMonster createRandomMob(){
-        int randNbr = getRandomNumberInRange(0,3);
+    public AbstractMonster createRandomMob() {
+        int randNbr = getRandomNumberInRange(0, 3);
         switch (randNbr) {
-            case 0 :
+            case 0:
                 return new Dwarf();
-            case 1 :
+            case 1:
                 return new Elf();
-            case 2 :
+            case 2:
                 return new Minotaur();
-            case 3 :
+            case 3:
                 return new Orc();
             default:
                 throw new IllegalArgumentException();
@@ -78,41 +86,41 @@ public class Board implements IRandom {
     }
 
     @Override
-    public void setMobPosition(){
+    public void setMobPosition() {
 
-        AbstractMonster monster [] = new AbstractMonster[mobs];
-        for(int i = 0; i < mobs ; i++){
+        AbstractMonster monster[] = new AbstractMonster[mobs];
+        for (int i = 0; i < mobs; i++) {
             monster[i] = createRandomMob();
         }
 
-        for(int i=0; i < mobs ; i++){
+        for (int i = 0; i < mobs; i++) {
             int positionX;
             int positionY;
-            do{
-                positionX = getPositionX();
-                positionY = getPositionY();
+            do {
+                positionX = getRandomNumberInRange(0 , size -1);
+                positionY = getRandomNumberInRange(0, size -1) ;
 
-            }while (playBoard[positionX][positionY] != null);
+            } while (playBoard[positionX][positionY] != null);
             playBoard[positionX][positionY] = monster[i];
         }
     }
 
     @Override
     public void setMaterialPosition() {
-        int howMuchMaterial = (size - mobs)/2;
-        AbstractMaterials material [] = new AbstractMaterials[howMuchMaterial];
-        for(int i = 0; i < howMuchMaterial ; i++){
+        int howMuchMaterial = (size - mobs) / 2;
+        AbstractMaterials material[] = new AbstractMaterials[howMuchMaterial];
+        for (int i = 0; i < howMuchMaterial; i++) {
             material[i] = randomMaterial();
         }
 
-        for(int i=0; i < howMuchMaterial ; i++){
+        for (int i = 0; i < howMuchMaterial; i++) {
             int positionX;
             int positionY;
-            do{
+            do {
                 positionX = getPositionX();
                 positionY = getPositionY();
 
-            }while (playBoard[positionX][positionY] != null);
+            } while (playBoard[positionX][positionY] != null);
             playBoard[positionX][positionY] = material[i];
         }
     }
@@ -120,16 +128,85 @@ public class Board implements IRandom {
     @Override
     public void move() {
         int iloscZywychMobow = 0;
+        int miejcaNaKtorychMobyX[] = new int[mobs];
+        int miejcaNaKtorychMobyY[] = new int[mobs];
         //Sprawdzam ilosc zywych mobow
-        for(int i = 0 ; i < size ; i++){
-            for (int j = 0 ; j < size ; j++){
-                if(playBoard[i][j] instanceof AbstractMonster)
-                    iloscZywychMobow++;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (playBoard[i][j] instanceof AbstractMonster)
+                    miejcaNaKtorychMobyX[iloscZywychMobow] = i;
+                miejcaNaKtorychMobyY[iloscZywychMobow] = j;
+                iloscZywychMobow++;
+                System.out.println(iloscZywychMobow);
             }
         }
+        for (int i = 0; i < iloscZywychMobow; i++) {
+            for (int k = 0; k < iloscZywychMobow; k++) {
+                int newPositionX = getPositionX();
+                int newPositionY = getPositionY();
+
+                if (playBoard[newPositionX][newPositionY] == null) {
+
+                    playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+
+                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
+                    playBoard[newPositionX][newPositionX] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                    //TODO dodac cos co bedzie dodawalo materialy
+                } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
+
+                    //Jesli sa tej samej klasy
+                    if (playBoard[newPositionX][newPositionY].getClass()
+                            == playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass()) {
+
+                        AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
+                        AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+
+                        double hp = a.getHealth() + b.getHealth();
+                        double attc = a.getAttack() + b.getAttack();
+                        double dff = a.getDefence() + b.getDefence();
+
+                        String name = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass().getName();
+
+                        playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+
+                        switch (name) {
+                            case "Elf":
+                                playBoard[newPositionX][newPositionY] = new Elf(hp, dff, attc);
+                            case "Dwarf":
+                                playBoard[newPositionX][newPositionY] = new Dwarf(hp, dff, attc);
+                            case "Minotaur":
+                                playBoard[newPositionX][newPositionY] = new Minotaur(hp, dff, attc);
+                            case "Orc":
+                                playBoard[newPositionX][newPositionY] = new Orc(hp, dff, attc);
+                            default:
+                                throw new IllegalArgumentException();
+                        }
 
 
+                    } else {
+                        AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
+                        AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
 
+                        if (a.getAttack() > b.getAttack()) {
+                            if (a.getDefence() + a.getHealth() > b.getDefence() + b.getHealth()) {
+                                playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                                playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                            } else {
+                                playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                            }
+                        } else {
+                            if (b.getHealth() + b.getDefence() > a.getHealth() + a.getDefence()) {
+                                playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                            } else {
+                                playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
