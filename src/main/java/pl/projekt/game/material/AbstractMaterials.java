@@ -1,4 +1,4 @@
-package pl.projekt.material;
+package pl.projekt.game.material;
 
 public abstract class AbstractMaterials {
     private int weight;
