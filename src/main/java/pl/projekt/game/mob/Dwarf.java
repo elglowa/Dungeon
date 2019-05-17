@@ -36,4 +36,5 @@ public class Dwarf extends AbstractMonster{
         public void createDagger(){
             //TODO
         }
+
 }
