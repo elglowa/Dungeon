@@ -8,16 +8,34 @@ public abstract class AbstractMonster implements IStats {
     private double attacPoints;
 
 
-    public void addAttack(double attc){ this.attacPoints += attc; }
+    private void addAttack(double attc) { this.attacPoints += attc; }
 
-    public void addHP(double HP){this.healthPoints += HP;}
+    private void addHP(double HP) { this.healthPoints += HP; }
 
-    public void addArmour(double armr){this.defencePoints += armr;}
+    private void addArmour(double armr) { this.defencePoints += armr; }
+
+    public void collectDiamonds(){
+        //TODO
+    }
+
+    public void collectWood(){
+        //TODO
+    }
+
+    public void createJeliewery(){
+        //TODO
+    }
+
+    public void createArmor(){
+        //TODO
+    }
+
+    public void createShield(){
+        //TODO
+    }
 
     public AbstractMonster fight(AbstractMonster firstM, AbstractMonster secondM){
         //TODO
-
-
         return null;
     }
 

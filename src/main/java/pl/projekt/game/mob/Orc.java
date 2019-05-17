@@ -1,18 +1,14 @@
 package pl.projekt.game.mob;
 
-import pl.projekt.game.IStats;
-
-import java.util.function.ToDoubleBiFunction;
-
-public class Elf extends AbstractMonster{
+public class Orc extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
 
 
-    Elf(){ }
+    Orc(){ }
 
-    Elf(double healthPoints, double defencePoints, double attacPoints){
+    Orc(double healthPoints, double defencePoints, double attacPoints){
         this.attacPoints = attacPoints;
         this.defencePoints = defencePoints;
         this.healthPoints = healthPoints;
@@ -33,11 +29,11 @@ public class Elf extends AbstractMonster{
         //TODO
     }
 
-    public void collectIron(){
+    public void collectStone(){
         //TODO
     }
 
-    public void createSword(){
+    public void createAxe(){
         //TODO
     }
 }
