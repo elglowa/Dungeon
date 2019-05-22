@@ -10,7 +10,7 @@ public class SimulationApp {
     private int numberOfMobs;
     private int mapSize;
     private Board gameBoard;
-    String date;
+    private String date;
 
     private void getMapSize(){
         Scanner scan = new Scanner(System.in);
@@ -23,7 +23,6 @@ public class SimulationApp {
                     System.out.println("Wielkosc mapy nie moze byc ujemna");
                 }else break;
             }while (true);
-
 
         }catch (IllegalArgumentException e){
             System.out.println(e.getCause().getMessage());
@@ -41,7 +40,6 @@ public class SimulationApp {
                 if (numberOfMobs > (mapSize*mapSize)){
                     System.out.println("ilosc Mobow > Mapa");
                 }else break;
-
             }while (true);
 
         }catch (IllegalArgumentException e){
@@ -51,9 +49,7 @@ public class SimulationApp {
         }
     }
 
-    private void creatGameBoard(){
-        gameBoard = new Board(mapSize, numberOfMobs);
-    }
+    private void creatGameBoard(){ gameBoard = new Board(mapSize, numberOfMobs); }
 
     private void createNewFile(){
         date = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
@@ -70,7 +66,6 @@ public class SimulationApp {
 
         if (fileExists)
             System.out.println("Plik " + fileName + " istnieje lub został utworzony");
-
     }
 
     private void saveToFIle(){
@@ -78,10 +73,6 @@ public class SimulationApp {
 
 
     }
-
-
-
-
 
     public static void main(String[] args) {
         SimulationApp app = new SimulationApp();
