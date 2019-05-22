@@ -38,7 +38,6 @@ public abstract class AbstractMonster implements IStats {
     }
 
     public void createJewelery(){
-        Class cls=this.getClass();
         new Jewelery(1,1,this);
     }
 

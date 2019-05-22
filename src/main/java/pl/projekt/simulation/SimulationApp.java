@@ -1,5 +1,8 @@
 package pl.projekt.simulation;
 
+import pl.projekt.game.mob.AbstractMonster;
+import pl.projekt.game.mob.Elf;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -84,7 +87,12 @@ public class SimulationApp {
 
 
     public static void main(String[] args) {
-        SimulationApp app = new SimulationApp();
+        //SimulationApp app = new SimulationApp();
+        AbstractMonster E1=new Elf(10,10,5);
+
+        System.out.println("Attack:"+E1.getAttack()+E1.getDefence()+E1);
+        E1.createJewelery();
+        System.out.println(E1.getAttack());
 
     }
 

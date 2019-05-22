@@ -24,7 +24,6 @@ public class Elf extends AbstractMonster{
 
     @Override
     public void addAttack() {
-        //TODO
     }
 
     @Override
@@ -35,6 +34,15 @@ public class Elf extends AbstractMonster{
     @Override
     public void addArmour() {
         //TODO
+    }
+
+    @Override
+    public double getAttack() {
+        return super.getAttack();
+    }
+
+    public double getHealthPoints() {
+        return healthPoints;
     }
 
     public void collectIron(Iron ir){
