@@ -31,4 +31,5 @@ public class Jewelery extends AbstractItem
     public void addAttack() {
         Mob1.addAttack(Mob1.getAttack()*0.02);
     }
+
 }

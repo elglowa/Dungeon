@@ -1,6 +1,7 @@
 package pl.projekt.game.mob;
 
 import pl.projekt.game.IStats;
+import pl.projekt.game.item.Jewelery;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Iron;
 
@@ -36,10 +37,22 @@ public class Elf extends AbstractMonster{
         //TODO
     }
 
-    public double getAttacPoints() {
-        return this.attacPoints;
+    public void setAttacPoints(double attacPoints) {
+        this.attacPoints = attacPoints;
     }
 
+    public void setDefencePoints(double defencePoints) {
+        this.defencePoints = defencePoints;
+    }
+
+    public void setHealthPoints(double healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
+    @Override
+    public double getAttack() {
+        return attacPoints;
+    }
 
     public void collectIron(Iron ir){
         Inventspr();
@@ -49,4 +62,5 @@ public class Elf extends AbstractMonster{
     public void createSword(){
         //TODO
     }
+
 }

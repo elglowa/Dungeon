@@ -14,8 +14,7 @@ public abstract class AbstractMonster implements IStats {
     private double attacPoints;
     private ArrayList<AbstractMaterials> Inventory;
 
-
-    public void addAttack(double attc) { this.attacPoints += attc; }
+    public void addAttack(double attack) { this.attacPoints +=attack; }
 
     public void addHP(double HP) { this.healthPoints += HP; }
 
@@ -38,7 +37,9 @@ public abstract class AbstractMonster implements IStats {
     }
 
     public void createJewelery(){
-        new Jewelery(1,1,this);
+        Jewelery J1=new Jewelery(1,1,this);
+        J1.addAttack();
+
     }
 
     public void createArmor(){
@@ -71,4 +72,5 @@ public abstract class AbstractMonster implements IStats {
             ArrayList<AbstractMaterials> Inventory=new ArrayList<AbstractMaterials>();
         }
     }
+
 }
