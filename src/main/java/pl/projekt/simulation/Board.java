@@ -126,7 +126,7 @@ public class Board implements IRandom {
             playBoard[positionX][positionY] = material[i];
         }
     }
-
+    //TODO rozdzielic move na kilka klas
     @Override
     public void move() {
         int iloscZywychMobow = 0;
