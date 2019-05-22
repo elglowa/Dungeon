@@ -5,8 +5,8 @@ import pl.projekt.game.mob.AbstractMonster;
 public class Armor extends AbstractItem
 {
     private AbstractMonster Mob1;
-    private double DamagePoints=4;
-    private double ArmourPoints=0;
+    private double DamagePoints=0;
+    private double ArmourPoints=4;
 
     public Armor(){}
 

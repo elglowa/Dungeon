@@ -1,9 +1,15 @@
 package pl.projekt.game.mob;
 
+import pl.projekt.game.material.AbstractMaterials;
+import pl.projekt.game.material.Stone;
+
+import java.util.ArrayList;
+
 public class Dwarf extends AbstractMonster{
         private double healthPoints = 10;
         private double defencePoints = 10;
         private double attacPoints = 5;
+        private ArrayList<AbstractMaterials> Inventory;
 
 
         public Dwarf(){ }
@@ -29,12 +35,13 @@ public class Dwarf extends AbstractMonster{
             //TODO
         }
 
-        public void collectStone(){
-            //TODO
+        public void collectStone(Stone st){
+                Inventspr();
+                Inventory.add(st);
         }
 
         public void createDagger(){
-            //TODO
+
         }
 
 }

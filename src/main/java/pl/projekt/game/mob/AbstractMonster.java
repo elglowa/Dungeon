@@ -1,11 +1,17 @@
 package pl.projekt.game.mob;
 
 import pl.projekt.game.IStats;
+import pl.projekt.game.material.AbstractMaterials;
+import pl.projekt.game.material.Diamond;
+import pl.projekt.game.material.Wood;
+
+import java.util.ArrayList;
 
 public abstract class AbstractMonster implements IStats {
     private double healthPoints;
     private double defencePoints;
     private double attacPoints;
+    private ArrayList<AbstractMaterials> Inventory;
 
 
     public void addAttack(double attc) { this.attacPoints += attc; }
@@ -20,12 +26,14 @@ public abstract class AbstractMonster implements IStats {
 
     public double getHealth() { return healthPoints; }
 
-    public void collectDiamonds(){
-        //TODO
+    public void collectDiamonds(Diamond dd){
+        Inventspr();
+        Inventory.add(dd);
     }
 
-    public void collectWood(){
-        //TODO
+    public void collectWood(Wood wd){
+        Inventspr();
+        Inventory.add(wd);
     }
 
     public void createJeliewery(){
@@ -53,5 +61,13 @@ public abstract class AbstractMonster implements IStats {
 
     public void mergeOrFight(AbstractMonster monster1, AbstractMonster monster2){
         //TODO
+    }
+
+    protected void Inventspr()
+    {
+        if (this.Inventory==null)
+        {
+            ArrayList<AbstractMaterials> Inventory=new ArrayList<AbstractMaterials>();
+        }
     }
 }
