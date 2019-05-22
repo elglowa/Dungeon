@@ -1,6 +1,7 @@
 package pl.projekt.game.mob;
 
 import pl.projekt.game.IStats;
+import pl.projekt.game.item.Jewelery;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Diamond;
 import pl.projekt.game.material.Wood;
@@ -36,8 +37,9 @@ public abstract class AbstractMonster implements IStats {
         Inventory.add(wd);
     }
 
-    public void createJeliewery(){
-        //TODO
+    public void createJewelery(){
+        Class cls=this.getClass();
+        new Jewelery(1,1,this);
     }
 
     public void createArmor(){
