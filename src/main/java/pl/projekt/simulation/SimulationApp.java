@@ -1,11 +1,16 @@
 package pl.projekt.simulation;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class SimulationApp {
     private int numberOfMobs;
     private int mapSize;
-
+    private Board gameBoard;
+    String date;
 
     private void getMapSize(){
         Scanner scan = new Scanner(System.in);
@@ -46,14 +51,41 @@ public class SimulationApp {
         }
     }
 
+    private void creatGameBoard(){
+        gameBoard = new Board(mapSize, numberOfMobs);
+    }
+
+    private void createNewFile(){
+        date = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
+        String fileName = ("symulacja:" + date + ".txt");
+        File file = new File(fileName);
+        boolean fileExists = file.exists();
+        if (!fileExists) {
+            try {
+                fileExists = file.createNewFile();
+            } catch (IOException e) {
+                System.out.println("Nie udało się utworzyć pliku");
+            }
+        }
+
+        if (fileExists)
+            System.out.println("Plik " + fileName + " istnieje lub został utworzony");
+
+    }
+
     private void saveToFIle(){
+
 
 
     }
 
-    public static void main(String[] args) {
 
-        //TODO
+
+
+
+    public static void main(String[] args) {
+        SimulationApp app = new SimulationApp();
+
     }
 
 

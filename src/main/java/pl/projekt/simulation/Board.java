@@ -226,7 +226,7 @@ public class Board implements IRandom {
             }
         }
     }
-    void wypisz(){
+    public void wypisz(){
         int iloscZywychMobow = 0;
         int miejcaNaKtorychMobyX[] = new int[mobs];
         int miejcaNaKtorychMobyY[] = new int[mobs];
