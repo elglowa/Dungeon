@@ -90,7 +90,7 @@ public class SimulationApp {
         //SimulationApp app = new SimulationApp();
         AbstractMonster E1=new Elf(10,10,5);
 
-        System.out.println("Attack:"+E1.getAttack()+E1.getDefence()+E1);
+        System.out.println("Attack:"+E1.ge+E1.getDefence()+E1.getHealth());
         E1.createJewelery();
         System.out.println(E1.getAttack());
 

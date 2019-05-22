@@ -36,14 +36,10 @@ public class Elf extends AbstractMonster{
         //TODO
     }
 
-    @Override
-    public double getAttack() {
-        return super.getAttack();
+    public double getAttacPoints() {
+        return this.attacPoints;
     }
 
-    public double getHealthPoints() {
-        return healthPoints;
-    }
 
     public void collectIron(Iron ir){
         Inventspr();
