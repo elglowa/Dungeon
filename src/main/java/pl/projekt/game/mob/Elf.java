@@ -1,12 +1,7 @@
 package pl.projekt.game.mob;
-
-import pl.projekt.game.IStats;
-import pl.projekt.game.item.Jewelery;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Iron;
-
 import java.util.ArrayList;
-import java.util.function.ToDoubleBiFunction;
 
 public class Elf extends AbstractMonster{
     private double healthPoints = 10;
@@ -54,8 +49,23 @@ public class Elf extends AbstractMonster{
         return attacPoints;
     }
 
+    @Override
+    public double getDefence() {
+        return super.getDefence();
+    }
+
+    @Override
+    public double getHealth() {
+        return super.getHealth();
+    }
+
+    @Override
+    public void createJewelery() {
+        super.createJewelery();
+    }
+
     public void collectIron(Iron ir){
-        Inventspr();
+       // Inventspr();
         Inventory.add(ir);
     }
 
@@ -63,4 +73,11 @@ public class Elf extends AbstractMonster{
         //TODO
     }
 
+    protected void seeInventory()
+    {
+        for(int i=0;i<this.Inventory.size();i++)
+        {
+            System.out.println(this.Inventory.get(i));
+        }
+    }
 }

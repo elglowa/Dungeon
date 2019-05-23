@@ -36,7 +36,7 @@ public class Orc extends AbstractMonster{
     }
 
     public void collectStone(Stone st){
-        Inventspr();
+       // Inventspr();
         Inventory.add(st);
     }
 

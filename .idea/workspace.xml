@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92597be4-074e-4d4c-b30d-ebb37ff9aa2e" name="Default Changelist" comment="dodawanie do inventory,bez throwów itp,tworzenie">
+    <list default="true" id="92597be4-074e-4d4c-b30d-ebb37ff9aa2e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Jewelery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Jewelery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Diamond.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Diamond.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Iron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Iron.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Dwarf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Dwarf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Elf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Elf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Minotaur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Minotaur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Orc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/projekt/simulation/SimulationApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/projekt/simulation/SimulationApp.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -44,14 +49,102 @@
     </projectState>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonster.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/simulation/SimulationApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="437">
+              <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="647">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#480#499#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Dwarf.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Minotaur.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Orc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/AbstractMaterials.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Elf.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Jewelery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#320#321#0" expanded="true" />
+                <element signature="e#339#340#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#587#588#0" expanded="true" />
+                <element signature="e#636#637#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/symulacja/SimulationApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/material/AbstractMaterials.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/material/Iron.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Iron.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/IStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/Monster.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Monster.java" />
@@ -93,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/simulation/IRandom.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Stone.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Wood.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Diamond.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/simulation/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Dagger.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Axe.java" />
@@ -103,18 +194,20 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Hammer.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Armor.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonsterTest.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonsterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Iron.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Diamond.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Jewelery.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Dwarf.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Minotaur.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Orc.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonsterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Elf.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonster.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Jewelery.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/projekt/simulation/SimulationApp.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="255" />
     <option name="y" value="27" />
     <option name="width" value="1390" />
@@ -126,7 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -213,6 +305,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -401,17 +494,24 @@
       <option name="project" value="LOCAL" />
       <updated>1558551469630</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="dodawanie do inventory,bez throwów itp,tworzenie">
+      <created>1558555471584</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1558555471584</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="16891000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="255" y="27" width="1390" height="1000" extended-state="0" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27901787" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21748754" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -420,7 +520,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4940476" visible="true" weight="0.3295063" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49363586" visible="true" weight="0.3099352" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49627978" weight="0.39954075" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,9 +528,9 @@
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49925596" weight="0.3283582" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50595236" side_tool="true" visible="true" weight="0.3295063" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50636417" side_tool="true" visible="true" weight="0.3099352" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.4955357" weight="0.3283582" />
+      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49255952" weight="0.32760596" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -585,20 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/AbstractMaterials.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Diamond.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Wood.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -614,26 +700,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonsterTest.groovy" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Orc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Minotaur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Sword.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -652,35 +718,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Dwarf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonsterTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Iron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Hammer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/simulation/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1478">
-          <caret line="124" column="52" selection-start-line="124" selection-start-column="52" selection-end-line="124" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -694,35 +736,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/simulation/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1492">
+          <caret line="124" column="52" selection-start-line="124" selection-start-column="52" selection-end-line="124" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/item/Jewelery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        <state relative-caret-position="150">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
             <element signature="e#492#493#0" expanded="true" />
             <element signature="e#546#547#0" expanded="true" />
             <element signature="e#587#588#0" expanded="true" />
             <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Elf.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Iron.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="45">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <folding>
+            <element signature="e#163#164#0" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/Diamond.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/material/AbstractMaterials.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Minotaur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/simulation/SimulationApp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Orc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
+        <state relative-caret-position="525">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Elf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -731,8 +816,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/AbstractMonster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="647">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#480#499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/game/mob/Dwarf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/projekt/simulation/SimulationApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

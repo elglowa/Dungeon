@@ -12,7 +12,7 @@ public abstract class AbstractMonster implements IStats {
     private double healthPoints;
     private double defencePoints;
     private double attacPoints;
-    private ArrayList<AbstractMaterials> Inventory;
+    private ArrayList<AbstractMaterials> Inventory=new ArrayList<AbstractMaterials>();
 
     public void addAttack(double attack) { this.attacPoints +=attack; }
 
@@ -26,19 +26,21 @@ public abstract class AbstractMonster implements IStats {
 
     public double getHealth() { return healthPoints; }
 
-    public void collectDiamonds(Diamond dd){
-        Inventspr();
+    public void collectDiamonds(AbstractMaterials dd){
+      //  Inventspr();
         Inventory.add(dd);
     }
 
-    public void collectWood(Wood wd){
-        Inventspr();
+    public void collectWood(AbstractMaterials wd){
+      //  Inventspr();
         Inventory.add(wd);
     }
 
     public void createJewelery(){
-        Jewelery J1=new Jewelery(1,1,this);
+        Jewelery J1=new Jewelery(this);
         J1.addAttack();
+        J1.addArmour();
+        J1.addHP();
 
     }
 
@@ -65,12 +67,19 @@ public abstract class AbstractMonster implements IStats {
         //TODO
     }
 
-    protected void Inventspr()
+    /*protected void Inventspr()
     {
-        if (this.Inventory==null)
+        if (this.Inventory.isEmpty())
         {
             ArrayList<AbstractMaterials> Inventory=new ArrayList<AbstractMaterials>();
         }
     }
 
+    protected void seeInventory()
+    {
+        for(int i=0;i<this.Inventory.size();i++)
+        {
+            System.out.println(this.Inventory.get(i));
+        }
+    }*/
 }

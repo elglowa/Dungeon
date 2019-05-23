@@ -1,5 +1,12 @@
 package pl.projekt.simulation;
 
+import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.material.AbstractMaterials;
+import pl.projekt.game.material.Diamond;
+import pl.projekt.game.material.Iron;
+import pl.projekt.game.mob.AbstractMonster;
+import pl.projekt.game.mob.Elf;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -75,8 +82,18 @@ public class SimulationApp {
     }
 
     public static void main(String[] args) {
-        SimulationApp app = new SimulationApp();
+       // SimulationApp app = new SimulationApp();
+        AbstractMaterials D1= new Diamond();
+        AbstractMonster E1=new Elf(10,10,5);
 
+
+        System.out.println(E1.getAttack()+" K "+E1.getHealth()+" K "+E1.getDefence());
+        E1.createJewelery();
+        System.out.println(E1.getAttack()+" K "+E1.getHealth()+" K "+E1.getDefence());
+
+
+        E1.collectDiamonds(D1);
+        
     }
 
 

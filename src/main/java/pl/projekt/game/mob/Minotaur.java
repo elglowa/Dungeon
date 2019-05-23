@@ -36,7 +36,7 @@ public class Minotaur extends AbstractMonster{
     }
 
     public void collectIron(Iron ir){
-        Inventspr();
+     //   Inventspr();
         Inventory.add(ir);
     }
     public void collectStone(){
