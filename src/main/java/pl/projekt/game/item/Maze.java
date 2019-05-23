@@ -17,17 +17,17 @@ public class Maze extends AbstractItem
     }
 
     @Override
-    public void addAttack() {
-        Mob1.addAttack(Mob1.getAttack()*0.1);
+    public void addAttack(double attack) {
+        Mob1.addAttack(attack+Mob1.getAttack()*0.1);
     }
 
     @Override
-    public void addHP() {
-        Mob1.addHP(Mob1.getHealth()*(-0.03));
+    public void addHP(double hp) {
+        Mob1.addHP(hp+Mob1.getHealth()*(-0.03));
     }
 
     @Override
-    public void addArmour() {
-        Mob1.addArmour(Mob1.getDefence()*(-0.03));
+    public void addArmour(double armour) {
+        Mob1.addArmour(armour+Mob1.getDefence()*(-0.03));
     }
 }

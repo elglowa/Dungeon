@@ -82,18 +82,9 @@ public class SimulationApp {
     }
 
     public static void main(String[] args) {
-       // SimulationApp app = new SimulationApp();
-        AbstractMaterials D1= new Diamond();
-        AbstractMonster E1=new Elf(10,10,5);
+        SimulationApp app = new SimulationApp();
 
 
-        System.out.println(E1.getAttack()+" K "+E1.getHealth()+" K "+E1.getDefence());
-        E1.createJewelery();
-        System.out.println(E1.getAttack()+" K "+E1.getHealth()+" K "+E1.getDefence());
-
-
-        E1.collectDiamonds(D1);
-        
     }
 
 

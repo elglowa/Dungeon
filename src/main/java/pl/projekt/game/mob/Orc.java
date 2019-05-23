@@ -21,18 +21,18 @@ public class Orc extends AbstractMonster{
     }
 
     @Override
-    public void addAttack() {
-        //TODO
+    public void addArmour(double armr) {
+        super.addArmour(armr);
     }
 
     @Override
-    public void addHP() {
-        //TODO
+    public void addHP(double HP) {
+        super.addHP(HP);
     }
 
     @Override
-    public void addArmour() {
-        //TODO
+    public void addAttack(double attack) {
+        super.addAttack(attack);
     }
 
     public void collectStone(Stone st){

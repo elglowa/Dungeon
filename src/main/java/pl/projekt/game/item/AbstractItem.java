@@ -10,6 +10,7 @@ public abstract class AbstractItem implements IStats
     private AbstractMonster Mob1;
     private int DamagePoints;
     private int ArmourPoints;
+    private int HpPoints;
 
     public void setArmourPoints(int armourPoints) {
         ArmourPoints = armourPoints;
@@ -19,11 +20,19 @@ public abstract class AbstractItem implements IStats
         DamagePoints = damagePoints;
     }
 
+    public void setHpPoints(int hpPoints) {
+        HpPoints = hpPoints;
+    }
+
     public int getArmourPoints() {
         return ArmourPoints;
     }
 
     public int getDamagePoints() {
         return DamagePoints;
+    }
+
+    public int getHpPoints() {
+        return HpPoints;
     }
 }

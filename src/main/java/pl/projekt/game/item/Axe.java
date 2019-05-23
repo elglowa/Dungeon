@@ -17,17 +17,17 @@ public class Axe extends AbstractItem
     }
 
     @Override
-    public void addAttack() {
-        Mob1.addAttack(Mob1.getAttack()*0.07);
+    public void addAttack(double attack) {
+        Mob1.addAttack(attack+Mob1.getAttack()*0.07);
     }
 
     @Override
-    public void addArmour() {
-        Mob1.addArmour(Mob1.getDefence()*(-0.03));
+    public void addArmour(double armour) {
+        Mob1.addArmour(armour+Mob1.getDefence()*(-0.03));
     }
 
     @Override
-    public void addHP() {
+    public void addHP(double hp) {
 
     }
 }

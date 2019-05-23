@@ -3,7 +3,7 @@ import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Iron;
 import java.util.ArrayList;
 
-public class Elf extends AbstractMonster{
+public class Elf extends AbstractMonster {
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
@@ -19,53 +19,34 @@ public class Elf extends AbstractMonster{
     }
 
     @Override
-    public void addAttack() {
+    public void addAttack(double attack) {
+        this.attacPoints +=attack;
     }
 
     @Override
-    public void addHP() {
-        //TODO
+    public void addArmour(double armr) {
+        this.defencePoints += armr;
     }
 
     @Override
-    public void addArmour() {
-        //TODO
-    }
-
-    public void setAttacPoints(double attacPoints) {
-        this.attacPoints = attacPoints;
-    }
-
-    public void setDefencePoints(double defencePoints) {
-        this.defencePoints = defencePoints;
-    }
-
-    public void setHealthPoints(double healthPoints) {
-        this.healthPoints = healthPoints;
+    public void addHP(double HP) {
+        this.healthPoints += HP;
     }
 
     @Override
     public double getAttack() {
-        return attacPoints;
+        return this.attacPoints;
     }
 
     @Override
     public double getDefence() {
-        return super.getDefence();
+        return this.defencePoints;
     }
 
     @Override
-    public double getHealth() {
-        return super.getHealth();
-    }
-
-    @Override
-    public void createJewelery() {
-        super.createJewelery();
-    }
+    public double getHealth() {return this.healthPoints; }
 
     public void collectIron(Iron ir){
-       // Inventspr();
         Inventory.add(ir);
     }
 
@@ -73,11 +54,4 @@ public class Elf extends AbstractMonster{
         //TODO
     }
 
-    protected void seeInventory()
-    {
-        for(int i=0;i<this.Inventory.size();i++)
-        {
-            System.out.println(this.Inventory.get(i));
-        }
-    }
 }

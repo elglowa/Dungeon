@@ -18,17 +18,17 @@ public class Hammer extends AbstractItem
     }
 
     @Override
-    public void addArmour() {
+    public void addArmour(double armour) {
 
     }
 
     @Override
-    public void addHP() {
-        Mob1.addHP(Mob1.getHealth()*0.02);
+    public void addHP(double hp) {
+        Mob1.addHP(hp+Mob1.getHealth()*0.02);
     }
 
     @Override
-    public void addAttack() {
-        Mob1.addAttack(Mob1.getAttack()*0.04);
+    public void addAttack(double attack) {
+        Mob1.addAttack(attack+Mob1.getAttack()*0.04);
     }
 }

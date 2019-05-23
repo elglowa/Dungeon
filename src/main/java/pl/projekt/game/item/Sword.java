@@ -18,17 +18,17 @@ public class Sword extends AbstractItem
     }
 
     @Override
-    public void addAttack() {
-        Mob1.addAttack(Mob1.getAttack()*0.05);
+    public void addAttack(double attack) {
+        Mob1.addAttack(attack+Mob1.getAttack()*0.05);
     }
 
     @Override
-    public void addHP() {
+    public void addHP(double hp) {
 
     }
 
     @Override
-    public void addArmour() {
+    public void addArmour(double armour) {
 
     }
 }
