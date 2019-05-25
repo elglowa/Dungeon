@@ -38,7 +38,7 @@ public class Board implements IRandom {
     //losowanie numeru z listy
     private static int getRandomNumberInRange(int min, int max) {
         if (min >= max) {
-            throw new IllegalArgumentException("max must be greater than min");
+            throw new IllegalArgumentException("max musi byc wiekszy niz min");
         }
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
@@ -169,31 +169,9 @@ public class Board implements IRandom {
                             AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
                             AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
 
-                            double hp = a.getHealth() + b.getHealth();
-                            double attc = a.getAttack() + b.getAttack();
-                            double dff = a.getDefence() + b.getDefence();
-
-                            String name = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass().getName().toString();
-
 
                             playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
-
-                            switch (name) {
-                                case "pl.projekt.game.mob.Elf":
-                                    playBoard[newPositionX][newPositionY] = new Elf(hp, dff, attc);
-                                    break;
-                                case "pl.projekt.game.mob.Dwarf":
-                                    playBoard[newPositionX][newPositionY] = new Dwarf(hp, dff, attc);
-                                    break;
-                                case "pl.projekt.game.mob.Minotaur":
-                                    playBoard[newPositionX][newPositionY] = new Minotaur(hp, dff, attc);
-                                    break;
-                                case "pl.projekt.game.mob.Orc":
-                                    playBoard[newPositionX][newPositionY] = new Orc(hp, dff, attc);
-                                    break;
-                                default:
-                                    throw new IllegalArgumentException();
-                            }
+                            playBoard[newPositionX][newPositionY] = a.merge(a, b);
 
                         } else {
                             AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
