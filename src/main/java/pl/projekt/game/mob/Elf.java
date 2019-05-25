@@ -65,11 +65,11 @@ public class Elf extends AbstractMonster {
             }
             if(inmb==0)
             {
-                AbstractItem D1=new Sword(this);
-                Equipment.add(D1);
-                D1.addAttack(0);
-                D1.addArmour(0);
-                D1.addHP(0);
+                AbstractItem S1=new Sword(this);
+                Equipment.add(S1);
+                S1.addAttack(0);
+                S1.addArmour(0);
+                S1.addHP(0);
             }
             inmb=0;
             Woodnmb-=1;

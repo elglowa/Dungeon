@@ -57,11 +57,11 @@ public class Minotaur extends AbstractMonster{
                 }
             }
             if (inmb==0) {
-                AbstractItem J1 = new Maze(this);
-                Equipment.add(J1);
-                J1.addAttack(0);
-                J1.addArmour(0);
-                J1.addHP(0);
+                AbstractItem M1 = new Maze(this);
+                Equipment.add(M1);
+                M1.addAttack(0);
+                M1.addArmour(0);
+                M1.addHP(0);
             }
             inmb=0;
             Ironnmb-=1;
