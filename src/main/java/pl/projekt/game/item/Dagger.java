@@ -8,7 +8,7 @@ public class Dagger extends AbstractItem
     private double DamagePoints=1.5;
     private double ArmourPoints=0;
 
-    public Dagger(){}
+    public Dagger(AbstractMonster mob1){this.Mob1=mob1;}
 
     public Dagger(double damagePoints,double armourPoints,AbstractMonster mob1)
     {

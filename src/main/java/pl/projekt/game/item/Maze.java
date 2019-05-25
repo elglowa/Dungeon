@@ -8,7 +8,7 @@ public class Maze extends AbstractItem
     private double DamagePoints=3;
     private double ArmourPoints=0;
 
-    public Maze(){}
+    public Maze(AbstractMonster mob1){this.Mob1=mob1;}
 
     public Maze(double damagePoints,double armourPoints,AbstractMonster mob1){
         this.ArmourPoints=armourPoints;

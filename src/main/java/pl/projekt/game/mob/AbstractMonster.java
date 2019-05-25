@@ -1,12 +1,7 @@
 package pl.projekt.game.mob;
-
 import pl.projekt.game.IStats;
-import pl.projekt.game.item.AbstractItem;
-import pl.projekt.game.item.Armor;
-import pl.projekt.game.item.Jewelery;
-import pl.projekt.game.item.Shield;
+import pl.projekt.game.item.*;
 import pl.projekt.game.material.AbstractMaterials;
-
 import java.util.ArrayList;
 
 public abstract class AbstractMonster implements IStats {
@@ -14,8 +9,8 @@ public abstract class AbstractMonster implements IStats {
     private double DefencePoints;
     private double AttacPoints;
     private int Woodnmb=0;
-    private int Diamondnmb;
-    private int inmb=0;
+    private int Diamondnmb=0;
+    protected int inmb=0;
     private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
 
     public void addAttack(double Attack) { this.AttacPoints +=Attack; }
@@ -30,48 +25,95 @@ public abstract class AbstractMonster implements IStats {
 
     public double getHealth() { return Health; }
 
-    public void collectDiamonds(AbstractMaterials dd){
+    public void collectDiamonds(){
         Diamondnmb++;
     }
 
-    public void collectWood(AbstractMaterials wd){
+    public void collectWood(){
         Woodnmb++;
     }
 
     public void createJewelery(){
         if(Diamondnmb==1 || Woodnmb==1) {
+
             for (int i = 0; i < Equipment.size(); i++) {
                 if (Equipment.get(i) instanceof Jewelery) {
                     inmb++;
                 }
             }
-            if (inmb == 0) {
+            if (inmb==0) {
                 AbstractItem J1 = new Jewelery(this);
                 Equipment.add(J1);
                 J1.addAttack(0);
                 J1.addArmour(0);
                 J1.addHP(0);
             }
-            Diamondnmb=0;
-            Woodnmb=0;
+            inmb=0;
+            Diamondnmb-=1;
+            Woodnmb-=1;
         }
     }
 
     public void createArmor(){
-        AbstractItem A1=new Armor(this);
-        Equipment.add(A1);
-        A1.addAttack(0);
-        A1.addArmour(0);
-        A1.addHP(0);
+        if(Woodnmb==3)
+        {
+            for(int i=0;i<Equipment.size();i++)
+            {
+                if(Equipment.get(i) instanceof Armor)
+                    inmb++;
+            }
+            if(inmb==0)
+            {
+                AbstractItem A1=new Armor(this);
+                Equipment.add(A1);
+                A1.addAttack(0);
+                A1.addArmour(0);
+                A1.addHP(0);
+            }
+            inmb=0;
+            Woodnmb-=3;
+        }
+    }
+
+    public void createDagger() {
+        if (Woodnmb == 2) {
+            for (int i = 0; i < Equipment.size(); i++) {
+                if (Equipment.get(i) instanceof Dagger)
+                    inmb++;
+            }
+            if (inmb == 0) {
+                AbstractItem D1 = new Dagger(this);
+                Equipment.add(D1);
+                D1.addAttack(0);
+                D1.addArmour(0);
+                D1.addHP(0);
+            }
+            inmb = 0;
+            Woodnmb -=2;
+        }
     }
 
     public void createShield(){
-        AbstractItem S1=new Shield(this);
-        Equipment.add(S1);
-        S1.addHP(0);
-        S1.addAttack(0);
-        S1.addArmour(0);
+        if(Woodnmb==2)
+        {
+            for(int i=0;i<Equipment.size();i++)
+            {
+                if(Equipment.get(i) instanceof Shield)
+                    inmb++;
+            }
+            if(inmb==0)
+            {
+                AbstractItem S1=new Shield(this);
+                Equipment.add(S1);
+                S1.addHP(0);
+                S1.addAttack(0);
+                S1.addArmour(0);
+            }
+            inmb=0;
+            Woodnmb-=2;
+        }
     }
+
 
     public AbstractMonster fight(AbstractMonster firstM, AbstractMonster secondM){
         //TODO
@@ -87,5 +129,25 @@ public abstract class AbstractMonster implements IStats {
     public void mergeOrFight(AbstractMonster monster1, AbstractMonster monster2){
         //TODO
     }
+
+    //Spróbuje dorobic żeby nie trzeba było kopiowac kodu,jak wiesz jak naprawić to droga wolna-ma zadziałać np Sprinst(Jewelery)
+   /* protected boolean Sprinst(Class Itt)
+    {
+        for(int i=0;i<Equipment.size();i++)
+        {
+            if(Itt.isInstance(Equipment.get(i)))
+                inmb++;
+        }
+        if(inmb==0)
+        {
+            inmb=0;
+            return true;
+        }
+        else
+        {
+            inmb=0;
+            return false;
+        }
+    }*/
 
 }

@@ -8,7 +8,7 @@ public class Hammer extends AbstractItem
     private double DamagePoints=1;
     private double ArmourPoints=1;
 
-    public Hammer(){}
+    public Hammer(AbstractMonster mob1){this.Mob1=mob1;}
 
     public Hammer(double damagePoints,double armourPoints,AbstractMonster mob1)
     {

@@ -1,5 +1,6 @@
 package pl.projekt.game.mob;
 
+import pl.projekt.game.item.AbstractItem;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Stone;
 
@@ -9,7 +10,7 @@ public class Orc extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
-    private ArrayList<AbstractMaterials> Inventory;
+    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
 
 
     public Orc(){ }
@@ -36,8 +37,7 @@ public class Orc extends AbstractMonster{
     }
 
     public void collectStone(Stone st){
-       // Inventspr();
-        Inventory.add(st);
+
     }
 
     public void createAxe(){
