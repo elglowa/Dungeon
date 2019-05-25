@@ -1,5 +1,7 @@
 package pl.projekt.game.mob;
 
+import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.item.Axe;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Stone;
 
@@ -9,7 +11,10 @@ public class Orc extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
-    private ArrayList<AbstractMaterials> Inventory;
+    private int Woodnmb=0;
+    private int Diamondnmb=0;
+    private int Stonenmb=0;
+    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
 
 
     public Orc(){ }
@@ -21,26 +26,45 @@ public class Orc extends AbstractMonster{
     }
 
     @Override
-    public void addAttack() {
-        //TODO
+    public void addArmour(double armr) {
+        super.addArmour(armr);
     }
 
     @Override
-    public void addHP() {
-        //TODO
+    public void addHP(double HP) {
+        super.addHP(HP);
     }
 
     @Override
-    public void addArmour() {
-        //TODO
+    public void addAttack(double attack) {
+        super.addAttack(attack);
     }
 
     public void collectStone(Stone st){
-        Inventspr();
-        Inventory.add(st);
+        Stonenmb++;
+
     }
 
     public void createAxe(){
-        //TODO
+        if(Woodnmb==2 && Stonenmb==2)
+        {
+            {
+                for (int i = 0; i < Equipment.size(); i++) {
+                    if (Equipment.get(i) instanceof Axe) {
+                        inmb++;
+                    }
+                }
+                if (inmb==0) {
+                    AbstractItem A1 = new Axe(this);
+                    Equipment.add(A1);
+                    A1.addAttack(0);
+                    A1.addArmour(0);
+                    A1.addHP(0);
+                }
+                inmb=0;
+                Stonenmb-=2;
+                Woodnmb-=2;
+            }
+        }
     }
 }

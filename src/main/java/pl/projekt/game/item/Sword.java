@@ -8,7 +8,7 @@ public class Sword extends AbstractItem
     private double DamagePoints=4;
     private double ArmourPoints=0;
 
-    public Sword(){}
+    public Sword(AbstractMonster mob1){this.Mob1=mob1;}
 
     public  Sword(double armourPoints,double damagePoints,AbstractMonster mob1)
     {
@@ -18,17 +18,17 @@ public class Sword extends AbstractItem
     }
 
     @Override
-    public void addAttack() {
-        Mob1.addAttack(Mob1.getAttack()*0.05);
+    public void addAttack(double attack) {
+        Mob1.addAttack(attack+Mob1.getAttack()*0.05);
     }
 
     @Override
-    public void addHP() {
+    public void addHP(double hp) {
 
     }
 
     @Override
-    public void addArmour() {
+    public void addArmour(double armour) {
 
     }
 }

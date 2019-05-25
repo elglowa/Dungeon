@@ -1,5 +1,7 @@
 package pl.projekt.game.mob;
 
+import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.item.Maze;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Iron;
 
@@ -9,7 +11,11 @@ public class Minotaur extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
-    private ArrayList<AbstractMaterials> Inventory;
+    private int Ironnmb=0;
+    private int Stonenmb=0;
+    private int Woodnmb=0;
+    private int Diamondnmb=0;
+    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
 
 
     public Minotaur(){ }
@@ -21,29 +27,46 @@ public class Minotaur extends AbstractMonster{
     }
 
     @Override
-    public void addAttack() {
-        //TODO
+    public void addAttack(double attack) {
+        super.addAttack(attack);
     }
 
     @Override
-    public void addHP() {
-        //TODO
+    public void addArmour(double armr) {
+        super.addArmour(armr);
     }
 
     @Override
-    public void addArmour() {
-        //TODO
+    public void addHP(double HP) {
+        super.addHP(HP);
     }
 
-    public void collectIron(Iron ir){
-        Inventspr();
-        Inventory.add(ir);
+    public void collectIron(){
+        Ironnmb++;
     }
     public void collectStone(){
-        //TODO
+        Stonenmb++;
     }
 
     public void createMaze(){
-        //TODO
+        if(Ironnmb==1 && Stonenmb==1 && Woodnmb==2)
+        {
+            for (int i = 0; i < Equipment.size(); i++) {
+                if (Equipment.get(i) instanceof Maze) {
+                    inmb++;
+                }
+            }
+            if (inmb==0) {
+                AbstractItem M1 = new Maze(this);
+                Equipment.add(M1);
+                M1.addAttack(0);
+                M1.addArmour(0);
+                M1.addHP(0);
+            }
+            inmb=0;
+            Ironnmb-=1;
+            Woodnmb-=2;
+            Stonenmb-=1;
+        }
     }
 }

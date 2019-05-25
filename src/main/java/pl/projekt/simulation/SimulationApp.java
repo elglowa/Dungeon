@@ -6,6 +6,13 @@
 
 package pl.projekt.simulation;
 
+import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.material.AbstractMaterials;
+import pl.projekt.game.material.Diamond;
+import pl.projekt.game.material.Iron;
+import pl.projekt.game.mob.AbstractMonster;
+import pl.projekt.game.mob.Elf;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -128,6 +135,7 @@ public class SimulationApp {
         app.gameBoard.wypisz();
         app.gameBoard.move();
         app.gameBoard.wypisz();
+
 
 
 

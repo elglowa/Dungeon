@@ -1,8 +1,8 @@
 package pl.projekt.game;
 
 public interface IStats {
-    void addAttack();
-    void addHP();
-    void addArmour();
+    void addAttack(double attack);
+    void addHP(double hp);
+    void addArmour(double armour);
 
 }

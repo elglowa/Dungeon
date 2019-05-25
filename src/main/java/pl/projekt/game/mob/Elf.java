@@ -1,18 +1,18 @@
 package pl.projekt.game.mob;
-
-import pl.projekt.game.IStats;
-import pl.projekt.game.item.Jewelery;
-import pl.projekt.game.material.AbstractMaterials;
-import pl.projekt.game.material.Iron;
+import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.item.Dagger;
+import pl.projekt.game.item.Sword;
 
 import java.util.ArrayList;
-import java.util.function.ToDoubleBiFunction;
 
-public class Elf extends AbstractMonster{
+public class Elf extends AbstractMonster {
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
-    private ArrayList<AbstractMaterials> Inventory;
+    private int Woodnmb=0;
+    private int Diamondnmb=0;
+    private int Ironnmb=0;
+    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
 
 
     public Elf(){ }
@@ -24,43 +24,58 @@ public class Elf extends AbstractMonster{
     }
 
     @Override
-    public void addAttack() {
+    public void addAttack(double attack) {
+        this.attacPoints +=attack;
     }
 
     @Override
-    public void addHP() {
-        //TODO
+    public void addArmour(double armr) {
+        this.defencePoints += armr;
     }
 
     @Override
-    public void addArmour() {
-        //TODO
-    }
-
-    public void setAttacPoints(double attacPoints) {
-        this.attacPoints = attacPoints;
-    }
-
-    public void setDefencePoints(double defencePoints) {
-        this.defencePoints = defencePoints;
-    }
-
-    public void setHealthPoints(double healthPoints) {
-        this.healthPoints = healthPoints;
+    public void addHP(double HP) {
+        this.healthPoints += HP;
     }
 
     @Override
     public double getAttack() {
-        return attacPoints;
+        return this.attacPoints;
     }
 
-    public void collectIron(Iron ir){
-        Inventspr();
-        Inventory.add(ir);
+    @Override
+    public double getDefence() {
+        return this.defencePoints;
+    }
+
+    @Override
+    public double getHealth() {return this.healthPoints; }
+
+    public void collectIron(){
+        Ironnmb++;
     }
 
     public void createSword(){
-        //TODO
+        if(Ironnmb==2 && Woodnmb==1)
+        {
+            for(int i=0;i<Equipment.size();i++)
+            {
+                if(Equipment.get(i) instanceof Sword)
+                    inmb++;
+            }
+            if(inmb==0)
+            {
+                AbstractItem S1=new Sword(this);
+                Equipment.add(S1);
+                S1.addAttack(0);
+                S1.addArmour(0);
+                S1.addHP(0);
+            }
+            inmb=0;
+            Woodnmb-=1;
+            Ironnmb-=2;
+        }
+        }
     }
 
-}
+
