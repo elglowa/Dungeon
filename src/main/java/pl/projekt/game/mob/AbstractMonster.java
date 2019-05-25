@@ -61,7 +61,6 @@ public abstract class AbstractMonster implements IStats {
 
         String name = monster1.getClass().getName().toString();
 
-
         switch (name) {
             case "pl.projekt.game.mob.Elf":
                 return new Elf(hp, dff, attc);
@@ -76,9 +75,6 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
-    public void mergeOrFight(AbstractMonster monster1, AbstractMonster monster2){
-        //TODO
-    }
 
     protected void Inventspr()
     {

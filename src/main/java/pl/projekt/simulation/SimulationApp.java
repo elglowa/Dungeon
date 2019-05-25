@@ -14,16 +14,15 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class SimulationApp {
-    private int numberOfMobs;
-    private int mapSize;
+    private int numberOfMobs = 9;
+    private int mapSize = 4;
     private Board gameBoard;
     private String date;
     private String fileName;
 
 
     /**
-     * Metoda getMapSize pyta uzytkownika o podanie wielkosci mapy
-     *
+     * Metoda getMapSize pyta uzytkownika o podanie wielkosci mapy i sprawdza czy wilkosc mapy jest > 0
      */
     private void getMapSize(){
         Scanner scan = new Scanner(System.in);
@@ -95,6 +94,7 @@ public class SimulationApp {
             System.out.println("Plik " + fileName + " istnieje lub został utworzony");
     }
 
+
     public void writeFile2(String a) throws IOException {
         FileWriter fw = new FileWriter(fileName);
 
@@ -107,7 +107,30 @@ public class SimulationApp {
 
     public static void main(String[] args) throws IOException {
         SimulationApp app = new SimulationApp();
-        app.createNewFile();
+        app.creatGameBoard();
+        app.gameBoard.createArray();
+        app.gameBoard.setMobPosition();
+        app.gameBoard.setMaterialPosition();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+        app.gameBoard.move();
+        app.gameBoard.wypisz();
+
+
+
     }
 
 
