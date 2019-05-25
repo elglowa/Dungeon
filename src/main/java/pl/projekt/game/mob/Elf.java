@@ -1,6 +1,8 @@
 package pl.projekt.game.mob;
 import pl.projekt.game.item.AbstractItem;
 import pl.projekt.game.item.Dagger;
+import pl.projekt.game.item.Sword;
+
 import java.util.ArrayList;
 
 public class Elf extends AbstractMonster {
@@ -58,12 +60,12 @@ public class Elf extends AbstractMonster {
         {
             for(int i=0;i<Equipment.size();i++)
             {
-                if(Equipment.get(i) instanceof Dagger)
+                if(Equipment.get(i) instanceof Sword)
                     inmb++;
             }
             if(inmb==0)
             {
-                AbstractItem D1=new Dagger(this);
+                AbstractItem D1=new Sword(this);
                 Equipment.add(D1);
                 D1.addAttack(0);
                 D1.addArmour(0);

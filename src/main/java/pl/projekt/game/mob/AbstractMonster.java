@@ -35,7 +35,6 @@ public abstract class AbstractMonster implements IStats {
 
     public void createJewelery(){
         if(Diamondnmb==1 || Woodnmb==1) {
-
             for (int i = 0; i < Equipment.size(); i++) {
                 if (Equipment.get(i) instanceof Jewelery) {
                     inmb++;

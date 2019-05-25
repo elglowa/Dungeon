@@ -8,7 +8,7 @@ public class Sword extends AbstractItem
     private double DamagePoints=4;
     private double ArmourPoints=0;
 
-    public Sword(){}
+    public Sword(AbstractMonster mob1){this.Mob1=mob1;}
 
     public  Sword(double armourPoints,double damagePoints,AbstractMonster mob1)
     {

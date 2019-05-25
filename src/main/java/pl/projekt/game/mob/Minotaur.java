@@ -1,6 +1,7 @@
 package pl.projekt.game.mob;
 
 import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.item.Maze;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Iron;
 
@@ -10,6 +11,10 @@ public class Minotaur extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
+    private int Ironnmb=0;
+    private int Stonenmb=0;
+    private int Woodnmb=0;
+    private int Diamondnmb=0;
     private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
 
 
@@ -36,14 +41,32 @@ public class Minotaur extends AbstractMonster{
         super.addHP(HP);
     }
 
-    public void collectIron(Iron ir){
-
+    public void collectIron(){
+        Ironnmb++;
     }
     public void collectStone(){
-        //TODO
+        Stonenmb++;
     }
 
     public void createMaze(){
-        //TODO
+        if(Ironnmb==1 && Stonenmb==1 && Woodnmb==2)
+        {
+            for (int i = 0; i < Equipment.size(); i++) {
+                if (Equipment.get(i) instanceof Maze) {
+                    inmb++;
+                }
+            }
+            if (inmb==0) {
+                AbstractItem J1 = new Maze(this);
+                Equipment.add(J1);
+                J1.addAttack(0);
+                J1.addArmour(0);
+                J1.addHP(0);
+            }
+            inmb=0;
+            Ironnmb-=1;
+            Woodnmb-=2;
+            Stonenmb-=1;
+        }
     }
 }
