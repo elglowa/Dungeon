@@ -17,12 +17,10 @@ import java.util.Random;
 public class Board implements IRandom {
     private int size;
     private int mobs;
-    private int iloscZywychMobow = 0;
-    private int miejcaNaKtorychMobyX[];
-    private int miejcaNaKtorychMobyY[];
+    private int aliveMobs = 0;
+    private int[] aliveMobsXCord;
+    private int[] aliveMobsYCord;
 
-    public Board() {
-    }
 
     public Board(int size, int mobs) {
         this.size = size;
@@ -32,7 +30,7 @@ public class Board implements IRandom {
     private Object[][] playBoard;
 
     /**
-     * Metoda createArray tworzy nowa plansze o wymiarze podanym przez urzytkownika
+     * Metoda tworzy nowa plansze o wymiarze podanym przez urzytkownika
      */
 
     public void createArray() {
@@ -85,7 +83,7 @@ public class Board implements IRandom {
      * @return zwraca wylosowany ranodomowo material
      */
 
-    public AbstractMaterials randomMaterial() {
+    private AbstractMaterials randomMaterial() {
         int randNbr = getRandomNumberInRange(0, 3);
         switch (randNbr) {
             case 0:
@@ -108,7 +106,7 @@ public class Board implements IRandom {
      * @return zwraca wylosowanego randomowo Moba
      */
 
-    public AbstractMonster createRandomMob() {
+    private AbstractMonster createRandomMob() {
         int randNbr = getRandomNumberInRange(0, 3);
         switch (randNbr) {
             case 0:
@@ -136,7 +134,7 @@ public class Board implements IRandom {
     @Override
     public void setMobPosition() {
 
-        AbstractMonster monster[] = new AbstractMonster[mobs];
+        AbstractMonster[] monster = new AbstractMonster[mobs];
         for (int i = 0; i < mobs; i++) {
             monster[i] = createRandomMob();
         }
@@ -163,7 +161,7 @@ public class Board implements IRandom {
     @Override
     public void setMaterialPosition() {
         int howMuchMaterial = ((size * size) - mobs) / 2;
-        AbstractMaterials material[] = new AbstractMaterials[howMuchMaterial];
+        AbstractMaterials[] material = new AbstractMaterials[howMuchMaterial];
         for (int i = 0; i < howMuchMaterial; i++) {
             material[i] = randomMaterial();
         }
@@ -183,17 +181,17 @@ public class Board implements IRandom {
     /**
      * Metoda szuka mobow na planszy a nastepnie zapisuje ich poycje
      */
-    public void lookForMobs(){
-        iloscZywychMobow = 0;
-        miejcaNaKtorychMobyX = new int[mobs];
-        miejcaNaKtorychMobyY = new int[mobs];
+    private void lookForMobs(){
+        aliveMobs = 0;
+        aliveMobsXCord = new int[mobs];
+        aliveMobsYCord = new int[mobs];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (playBoard[i][j] instanceof AbstractMonster) {
-                    miejcaNaKtorychMobyX[iloscZywychMobow] = i;
-                    miejcaNaKtorychMobyY[iloscZywychMobow] = j;
-                    iloscZywychMobow++;
-                    System.out.println(iloscZywychMobow);
+                    aliveMobsXCord[aliveMobs] = i;
+                    aliveMobsYCord[aliveMobs] = j;
+                    aliveMobs++;
+                    System.out.println(aliveMobs);
                 }
             }
         }
@@ -204,20 +202,20 @@ public class Board implements IRandom {
 
         lookForMobs();
 
-        for(int i = 0; i < iloscZywychMobow; i++) {
-            for (int k = 0; k < iloscZywychMobow; k++) {
+        for(int i = 0; i < aliveMobs; i++) {
+            for (int k = 0; k < aliveMobs; k++) {
                 int newPositionX = getPositionX();
                 int newPositionY = getPositionY();
 
                 if (playBoard[newPositionX][newPositionY] == null) {
 
-                    playBoard[newPositionX][newPositionY] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                    playBoard[newPositionX][newPositionY] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
-                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
                 } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
                     String name = playBoard[newPositionX][newPositionY].getClass().getName().toString();
-                    playBoard[newPositionX][newPositionX] = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
-                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                    playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
                     switch (name) {
                         case "pl.projekt.game.material.Wood":
                             //TODO spr czy mob moze brac material + dodac ten material do inventory
@@ -238,40 +236,49 @@ public class Board implements IRandom {
 
                 } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
 
-                    if (playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] != null
+                    if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] != null
                             && playBoard[newPositionX][newPositionY] != null) {
                         //Jesli sa tej samej klasy
-                        if (playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]].getClass()
+                        if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]].getClass()
                                 == playBoard[newPositionX][newPositionY].getClass()) {
 
                             AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
-                            AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                            AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
                             playBoard[newPositionX][newPositionY] = a.merge(a, b);
 
-                            playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                            playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
 
-                            iloscZywychMobow--;
+                            aliveMobs--;
 
                         } else {
                             AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
-                            AbstractMonster b = (AbstractMonster) playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                            AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
                             if (a.getAttack() > b.getAttack()) {
                                 if (a.getDefence() + a.getHealth() > b.getDefence() + b.getHealth()) {
                                     playBoard[newPositionX][newPositionY]
-                                            = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                                            = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
-                                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+
+                                    aliveMobs--;
                                 } else {
-                                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+
+                                    aliveMobs--;
                                 }
                             } else {
                                 if (b.getHealth() + b.getDefence() > a.getHealth() + a.getDefence()) {
-                                    playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]] = null;
+                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+
+                                    aliveMobs--;
                                 } else {
                                     playBoard[newPositionX][newPositionY]
-                                            = playBoard[miejcaNaKtorychMobyX[i]][miejcaNaKtorychMobyY[i]];
+                                            = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+
+                                    aliveMobs--;
 
                                 }
                             }
@@ -282,11 +289,14 @@ public class Board implements IRandom {
         }
     }
 
+    //TODO dodac metode ktora zlicza ilosc poszczegolnych mobow
+    //TODO metoda boolean ktora sprawdza czy zostal tylko 1 gatunek na planszy
+    //TODO metoda ktora laczy wszystkie metody przy tworzeniu planszy
 
     public void wypisz(){
         int iloscZywychMobow = 0;
-        int absX[] = new int[mobs];
-        int absY[] = new int[mobs];
+        int[] absX = new int[mobs];
+        int[] absY = new int[mobs];
         //Sprawdzam ilosc zywych mobow
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

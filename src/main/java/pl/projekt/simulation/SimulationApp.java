@@ -56,20 +56,22 @@ public class SimulationApp {
      */
 
     private void getNumberOfMobs(){
-        Scanner scan = new Scanner(System.in);
         try {
-            do {
-                System.out.println("Podaj ilosc mobow (musi byc wieksza niz wielkosc mapy)");
-                numberOfMobs = scan.nextInt();
-                if (numberOfMobs > (mapSize*mapSize)){
-                    System.out.println("ilosc Mobow > Mapa");
-                }else break;
-            }while (true);
+            Scanner scan = new Scanner(System.in);
+            try {
+                do {
+                    System.out.println("Podaj ilosc mobow (musi byc wieksza niz wielkosc mapy)");
+                    numberOfMobs = scan.nextInt();
+                    if (numberOfMobs > (mapSize * mapSize)) {
+                        System.out.println("ilosc Mobow > Mapa");
+                    } else break;
+                } while (true);
 
-        }catch (IllegalArgumentException e){
+            } finally {
+                scan.close();
+            }
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getCause().getMessage());
-        }finally {
-            scan.close();
         }
     }
 
@@ -112,7 +114,9 @@ public class SimulationApp {
         fw.close();
     }
 
-    public static void main(String[] args) throws IOException {
+    //TODO metoda run
+
+    public static void main(String[] args) {
         SimulationApp app = new SimulationApp();
         app.creatGameBoard();
         app.gameBoard.createArray();
