@@ -255,7 +255,16 @@ public class Board implements IRandom {
                             AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
                             AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
-                            if (a.getAttack() > b.getAttack()) {
+
+                            //nowa wersja
+                            playBoard[newPositionX][newPositionY] = a.fight(a , b);
+                            playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+                            aliveMobs--;
+
+
+                            //Stara wersja nowa powinna juz dzialac
+
+                            /*if (a.getAttack() > b.getAttack()) {
                                 if (a.getDefence() + a.getHealth() > b.getDefence() + b.getHealth()) {
                                     playBoard[newPositionX][newPositionY]
                                             = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
@@ -279,9 +288,11 @@ public class Board implements IRandom {
                                     playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
 
                                     aliveMobs--;
+                               }
 
-                                }
-                            }
+                             */
+
+
                         }
                     }
                 }

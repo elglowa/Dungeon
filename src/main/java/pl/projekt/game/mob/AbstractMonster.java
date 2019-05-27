@@ -111,8 +111,35 @@ public abstract class AbstractMonster implements IStats {
 
 
     public AbstractMonster fight(AbstractMonster firstM, AbstractMonster secondM){
+        if (firstM.getAttack() > secondM.getAttack()) {
+            if (firstM.getDefence() + secondM.getHealth() > firstM.getDefence() + secondM.getHealth()) {
 
-        return null;
+                return secondM;
+
+                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+                //aliveMobs--;
+            } else {
+                return firstM;
+
+                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+                //aliveMobs--;
+            }
+        } else {
+            if (secondM.getHealth() + secondM.getDefence() > firstM.getHealth() + firstM.getDefence()) {
+
+                return secondM;
+                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+                //aliveMobs--;
+            } else {
+
+                return firstM;
+                //playBoard[newPositionX][newPositionY]
+                  //      = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+
+                //aliveMobs--;
+            }
+        }
     }
 
     public AbstractMonster merge(AbstractMonster monster1, AbstractMonster monster2) {
