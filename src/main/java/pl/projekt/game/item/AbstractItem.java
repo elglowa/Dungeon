@@ -12,27 +12,15 @@ public abstract class AbstractItem implements IStats
     private int ArmourPoints;
     private int HpPoints;
 
-    public void setArmourPoints(int armourPoints) {
-        ArmourPoints = armourPoints;
-    }
+    public void setArmourPoints(int armourPoints) { ArmourPoints = armourPoints; }
 
-    public void setDamagePoints(int damagePoints) {
-        DamagePoints = damagePoints;
-    }
+    public void setDamagePoints(int damagePoints) { DamagePoints = damagePoints; }
 
-    public void setHpPoints(int hpPoints) {
-        HpPoints = hpPoints;
-    }
+    public void setHpPoints(int hpPoints) { HpPoints = hpPoints; }
 
-    public int getArmourPoints() {
-        return ArmourPoints;
-    }
+    public int getArmourPoints() { return ArmourPoints; }
 
-    public int getDamagePoints() {
-        return DamagePoints;
-    }
+    public int getDamagePoints() { return DamagePoints; }
 
-    public int getHpPoints() {
-        return HpPoints;
-    }
+    public int getHpPoints() { return HpPoints; }
 }

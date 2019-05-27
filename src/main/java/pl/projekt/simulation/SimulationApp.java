@@ -115,6 +115,7 @@ public class SimulationApp {
     }
 
     //TODO metoda run
+    //TODO metoda sprawdzajaca kiedy ma sie skonczyc symulacja
 
     public static void main(String[] args) {
         SimulationApp app = new SimulationApp();

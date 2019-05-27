@@ -9,10 +9,10 @@ public class Dwarf extends AbstractMonster{
         private double healthPoints = 10;
         private double defencePoints = 10;
         private double attacPoints = 5;
-        private int Woodnmb=0;
-        private int Diamondnmb=0;
-        private int Stonenmb=0;
-        private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
+        private int Woodnmb = 0;
+        private int Diamondnmb = 0;
+        private int Stonenmb = 0;
+        private ArrayList<AbstractItem> Equipment = new ArrayList<AbstractItem>();
 
 
         public Dwarf(){ }
@@ -24,24 +24,16 @@ public class Dwarf extends AbstractMonster{
         }
 
         @Override
-        public void addHP(double HP) {
-                super.addHP(HP);
-        }
+        public void addHP(double HP) { super.addHP(HP); }
 
         @Override
-        public void addArmour(double armr) {
-                super.addArmour(armr);
-        }
+        public void addArmour(double armr) { super.addArmour(armr); }
 
         @Override
-        public void addAttack(double attack) {
-                super.addAttack(attack);
-        }
+        public void addAttack(double attack) { super.addAttack(attack); }
 
 
-        public void collectStone(){
-                Stonenmb++;
-        }
+        public void collectStone(){ Stonenmb++; }
 
         public void createHammer()
         {

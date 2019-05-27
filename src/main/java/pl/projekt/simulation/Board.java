@@ -46,7 +46,7 @@ public class Board implements IRandom {
      * @param max maksymalna liczna z przedzialu
      * @return zwraca wylosowana liczbe
      */
-    private static int getRandomNumberInRange(int min, int max) {
+    private int getRandomNumberInRange(int min, int max) {
         if (min >= max) {
             throw new IllegalArgumentException("max musi byc wiekszy niz min");
         }
@@ -196,7 +196,8 @@ public class Board implements IRandom {
             }
         }
     }
-    //TODO rozdzielic move na kilka metod
+
+
     @Override
     public void move() {
 

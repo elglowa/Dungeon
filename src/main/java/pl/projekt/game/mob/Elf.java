@@ -9,10 +9,10 @@ public class Elf extends AbstractMonster {
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
-    private int Woodnmb=0;
-    private int Diamondnmb=0;
-    private int Ironnmb=0;
-    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
+    private int Woodnmb = 0;
+    private int Diamondnmb = 0;
+    private int Ironnmb = 0;
+    private ArrayList<AbstractItem> Equipment = new ArrayList<AbstractItem>();
 
 
     public Elf(){ }
@@ -24,46 +24,34 @@ public class Elf extends AbstractMonster {
     }
 
     @Override
-    public void addAttack(double attack) {
-        this.attacPoints +=attack;
-    }
+    public void addAttack(double attack) { this.attacPoints +=attack; }
 
     @Override
-    public void addArmour(double armr) {
-        this.defencePoints += armr;
-    }
+    public void addArmour(double armr) { this.defencePoints += armr; }
 
     @Override
-    public void addHP(double HP) {
-        this.healthPoints += HP;
-    }
+    public void addHP(double HP) { this.healthPoints += HP; }
 
     @Override
-    public double getAttack() {
-        return this.attacPoints;
-    }
+    public double getAttack() { return this.attacPoints; }
 
     @Override
-    public double getDefence() {
-        return this.defencePoints;
-    }
+    public double getDefence() { return this.defencePoints; }
 
     @Override
     public double getHealth() {return this.healthPoints; }
 
-    public void collectIron(){
-        Ironnmb++;
-    }
+    public void collectIron(){ Ironnmb++; }
 
     public void createSword(){
-        if(Ironnmb==2 && Woodnmb==1)
+        if(Ironnmb == 2 && Woodnmb == 1)
         {
-            for(int i=0;i<Equipment.size();i++)
+            for(int i = 0; i < Equipment.size(); i++)
             {
                 if(Equipment.get(i) instanceof Sword)
                     inmb++;
             }
-            if(inmb==0)
+            if(inmb == 0)
             {
                 AbstractItem S1=new Sword(this);
                 Equipment.add(S1);
@@ -71,9 +59,9 @@ public class Elf extends AbstractMonster {
                 S1.addArmour(0);
                 S1.addHP(0);
             }
-            inmb=0;
-            Woodnmb-=1;
-            Ironnmb-=2;
+            inmb = 0;
+            Woodnmb -= 1;
+            Ironnmb -=2;
         }
         }
     }

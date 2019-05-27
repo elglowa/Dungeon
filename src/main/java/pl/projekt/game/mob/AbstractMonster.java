@@ -109,6 +109,12 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * Metoda wykonuje walke 2 mobow roznych klas a nastepnie zwraca wygranego
+     * @param firstM 1 mob
+     * @param secondM 2 mob
+     * @return zwraca wygranego moba
+     */
 
     public AbstractMonster fight(AbstractMonster firstM, AbstractMonster secondM){
         if (firstM.getAttack() > secondM.getAttack()) {
@@ -141,6 +147,14 @@ public abstract class AbstractMonster implements IStats {
             }
         }
     }
+
+    /**
+     * Metoda ktora w parametrach przyjmuje 2 moby tej samej klasy a nastepnie
+     * laczy je w 1 nowego moba o sumie parametrow
+     * @param monster1 1 mob
+     * @param monster2 2 mob
+     * @return zwraca nowego moba
+     */
 
     public AbstractMonster merge(AbstractMonster monster1, AbstractMonster monster2) {
         double hp = monster1.getHealth() + monster2.getHealth();

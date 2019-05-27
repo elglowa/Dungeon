@@ -15,7 +15,7 @@ public class Minotaur extends AbstractMonster{
     private int Stonenmb=0;
     private int Woodnmb=0;
     private int Diamondnmb=0;
-    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
+    private ArrayList<AbstractItem> Equipment = new ArrayList<AbstractItem>();
 
 
     public Minotaur(){ }
@@ -27,29 +27,20 @@ public class Minotaur extends AbstractMonster{
     }
 
     @Override
-    public void addAttack(double attack) {
-        super.addAttack(attack);
-    }
+    public void addAttack(double attack) { super.addAttack(attack); }
 
     @Override
-    public void addArmour(double armr) {
-        super.addArmour(armr);
-    }
+    public void addArmour(double armr) { super.addArmour(armr); }
 
     @Override
-    public void addHP(double HP) {
-        super.addHP(HP);
-    }
+    public void addHP(double HP) { super.addHP(HP); }
 
-    public void collectIron(){
-        Ironnmb++;
-    }
-    public void collectStone(){
-        Stonenmb++;
-    }
+    public void collectIron(){ Ironnmb++; }
+
+    public void collectStone(){ Stonenmb++; }
 
     public void createMaze(){
-        if(Ironnmb==1 && Stonenmb==1 && Woodnmb==2)
+        if(Ironnmb == 1 && Stonenmb == 1 && Woodnmb == 2)
         {
             for (int i = 0; i < Equipment.size(); i++) {
                 if (Equipment.get(i) instanceof Maze) {
@@ -63,10 +54,10 @@ public class Minotaur extends AbstractMonster{
                 M1.addArmour(0);
                 M1.addHP(0);
             }
-            inmb=0;
-            Ironnmb-=1;
-            Woodnmb-=2;
-            Stonenmb-=1;
+            inmb = 0;
+            Ironnmb -= 1;
+            Woodnmb -=2 ;
+            Stonenmb -=1 ;
         }
     }
 }
