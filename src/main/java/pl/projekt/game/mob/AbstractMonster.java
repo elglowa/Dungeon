@@ -121,29 +121,18 @@ public abstract class AbstractMonster implements IStats {
             if (firstM.getDefence() + secondM.getHealth() > firstM.getDefence() + secondM.getHealth()) {
 
                 return secondM;
-
-                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-                //aliveMobs--;
             } else {
                 return firstM;
 
-                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-                //aliveMobs--;
             }
         } else {
             if (secondM.getHealth() + secondM.getDefence() > firstM.getHealth() + firstM.getDefence()) {
 
                 return secondM;
-                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-                //aliveMobs--;
+
             } else {
 
                 return firstM;
-                //playBoard[newPositionX][newPositionY]
-                  //      = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
-                //playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
-                //aliveMobs--;
             }
         }
     }
@@ -173,6 +162,25 @@ public abstract class AbstractMonster implements IStats {
                 return new Minotaur(hp, dff, attc);
             case "pl.projekt.game.mob.Orc":
                 return new Orc(hp, dff, attc);
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    public void collectMaterial(String name, AbstractMonster monster1){
+        switch (name) {
+            case "pl.projekt.game.material.Wood":
+                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                break;
+            case "pl.projekt.game.material.Stone":
+                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                break;
+            case "pl.projekt.game.material.Iron":
+                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                break;
+            case "pl.projekt.game.material.Diamond":
+                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                break;
             default:
                 throw new IllegalArgumentException();
         }

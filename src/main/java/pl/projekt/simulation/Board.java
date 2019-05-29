@@ -235,25 +235,13 @@ public class Board implements IRandom {
                     playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
                 } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
                     String name = playBoard[newPositionX][newPositionY].getClass().getName();
+                    AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
                     playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
                     playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-                    switch (name) {
-                        case "pl.projekt.game.material.Wood":
-                            //TODO spr czy mob moze brac material + dodac ten material do inventory
-                            break;
-                        case "pl.projekt.game.material.Stone":
-                            //TODO spr czy mob moze brac material + dodac ten material do inventory
-                            break;
-                        case "pl.projekt.game.material.Iron":
-                            //TODO spr czy mob moze brac material + dodac ten material do inventory
-                            break;
-                        case "pl.projekt.game.material.Diamond":
-                            //TODO spr czy mob moze brac material + dodac ten material do inventory
-                            break;
-                        default:
-                            throw new IllegalArgumentException();
-                    }
+
+                    b.collectMaterial(name, b);
+
 
                 } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
 
@@ -288,7 +276,7 @@ public class Board implements IRandom {
     }
 
     /**
-     *
+     * Metoda zlicza ilosc poszczegolnych mobow
      */
 
     private void countMobs() {
@@ -312,8 +300,8 @@ public class Board implements IRandom {
     }
 
     /**
-     *
-     * @return
+     * Metoda sprawdza czy na planszy znajduje sie tylko jeden gatunek moba
+     * @return zwraca prawde jesli znajduje sie tylko 1 a falsz jesli kilka
      */
 
     public boolean onlyOneSpeciesLeft(){
@@ -347,28 +335,5 @@ public class Board implements IRandom {
         return sB.toString();
     }
 
-
-
-    public void wypisz(){
-        int iloscZywychMobow = 0;
-        int[] absX = new int[mobs];
-        int[] absY = new int[mobs];
-        //Sprawdzam ilosc zywych mobow
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (playBoard[i][j] instanceof AbstractMonster) {
-                    absX[iloscZywychMobow] = i;
-                    System.out.println("Pozycja X: "+ i);
-                    absY[iloscZywychMobow] = j;
-                    System.out.println("Pozycja Y: "+ j);
-                    System.out.println();
-                    iloscZywychMobow++;
-                    System.out.println("MOB nr " + iloscZywychMobow);
-                    System.out.println("_____");
-                }
-            }
-        }
-
-    }
 }
 

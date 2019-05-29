@@ -1,9 +1,3 @@
-/**
- * Projekt Programowanie Obiektowe
- * @version beta v0.9.1
- * @author Jakub Gliwa, Kacper Ziejlo
- */
-
 package pl.projekt.simulation;
 
 import java.io.BufferedWriter;
@@ -15,6 +9,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+/**
+ * Projekt Programowanie Obiektowe
+ * @version beta v0.9.1
+ * @author Jakub Gliwa, Kacper Ziejlo
+ */
 
 public class SimulationApp {
     private int numberOfMobs;
@@ -48,25 +48,19 @@ public class SimulationApp {
      * oraz sprawdza czy taka ilosc mobow moze zostac umieszczona na mapie
      */
 
-
-
     private void getNumberOfMobs(){
-            Scanner scan = new Scanner(System.in);
-            try {
-                do{
-                    System.out.println("Podaj ilosc mobow (musi byc mniejsza niz wielkosc mapy)");
-                    numberOfMobs = scan.nextInt();
-                    if (numberOfMobs > (mapSize * mapSize)) {
-                        System.out.println("ilosc Mobow > Mapa");
-                    } else break;
-                } while (true);
+        try (Scanner scan = new Scanner(System.in)) {
+            do {
+                System.out.println("Podaj ilosc mobow (musi byc mniejsza niz wielkosc mapy)");
+                numberOfMobs = scan.nextInt();
+                if (numberOfMobs > (mapSize * mapSize)) {
+                    System.out.println("ilosc Mobow > Mapa");
+                } else break;
+            } while (true);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getCause().getMessage());
-            }finally {
-                scan.close();
-            }
-
+        }
     }
 
     /**
@@ -97,18 +91,28 @@ public class SimulationApp {
             System.out.println("Plik " + fileName + " został utworzony");
     }
 
+    /**
+     * Metoda zapisuje liste String do pliku
+     * @param data przyjmuje liste<String>
+     */
 
-    private void writeData(List<String> data) throws IOException {
+    private void writeData(List<String> data) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for(String d:data) {
                 bw.write(d);
                 bw.newLine();
             }
+        }catch (IOException e){
+            System.out.println(e.getCause().getMessage());
         }
     }
 
-    public void runApp() throws IOException{
-        int i=0;
+    /**
+     * Metoda laczy inne metody potrzebne do uruchomienia aplikacji oraz zapisu do pliku
+     */
+
+    private void runApp() {
+        int i = 0;
         getMapSize();
         getNumberOfMobs();
         creatGameBoard();
@@ -126,17 +130,9 @@ public class SimulationApp {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         SimulationApp app = new SimulationApp();
         app.runApp();
-
-
-
-
-
-
     }
-
-
 }
 
