@@ -20,6 +20,11 @@ public class Board implements IRandom {
     private int aliveMobs = 0;
     private int[] aliveMobsXCord;
     private int[] aliveMobsYCord;
+    private int nrOfDwarfs;
+    private int nrOfElfs;
+    private int nrOfMinotaurs;
+    private int nrOfOrcs;
+    private Object[][] playBoard;
 
 
     public Board(int size, int mobs) {
@@ -27,7 +32,6 @@ public class Board implements IRandom {
         this.mobs = mobs;
     }
 
-    private Object[][] playBoard;
 
     /**
      * Metoda tworzy nowa plansze o wymiarze podanym przez urzytkownika
@@ -46,7 +50,7 @@ public class Board implements IRandom {
      * @param max maksymalna liczna z przedzialu
      * @return zwraca wylosowana liczbe
      */
-    private int getRandomNumberInRange(int min, int max) {
+    private int createRandomNumberInRange(int min, int max) {
         if (min >= max) {
             throw new IllegalArgumentException("max musi byc wiekszy niz min");
         }
@@ -56,35 +60,30 @@ public class Board implements IRandom {
 
     /**
      * Metoda za pomoca
-     * @see Board#getRandomNumberInRange(int, int)  losuje nowa kordynate X
+     * @see Board#createRandomNumberInRange(int, int)  losuje nowa kordynate X
      * @return zwraca kordynate X
      */
 
     @Override
-    public int getPositionX() {
-        return getRandomNumberInRange(0, size - 1);
-
-    }
+    public int getPositionX() { return createRandomNumberInRange(0, size - 1); }
 
     /**
      * Metoda za pomoca
-     * @see Board#getRandomNumberInRange(int, int)  losuje nowa kordynate Y
+     * @see Board#createRandomNumberInRange(int, int)  losuje nowa kordynate Y
      * @return zwraca kordynate Y
      */
 
-    public int getPositionY() {
-        return getRandomNumberInRange(0, size - 1);
-    }
+    public int getPositionY() { return createRandomNumberInRange(0, size - 1); }
 
     /**
      * Metoda uzywajac metody
-     * @see Board#getRandomNumberInRange(int, int) losuje randomowa liczbe w przedziale od 0 do 3
+     * @see Board#createRandomNumberInRange(int, int) losuje randomowa liczbe w przedziale od 0 do 3
      * a nastepie uzywa instrukcji switch zeby wybrac material
      * @return zwraca wylosowany ranodomowo material
      */
 
     private AbstractMaterials randomMaterial() {
-        int randNbr = getRandomNumberInRange(0, 3);
+        int randNbr = createRandomNumberInRange(0, 3);
         switch (randNbr) {
             case 0:
                 return new Iron();
@@ -101,13 +100,13 @@ public class Board implements IRandom {
 
     /**
      * Metoda uzywajac metody
-     * @see Board#getRandomNumberInRange(int, int) losuje randomowa liczbe w przedziale od 0 do 3
+     * @see Board#createRandomNumberInRange(int, int) losuje randomowa liczbe w przedziale od 0 do 3
      * a nastepie uzywa instrukcji switch zeby wybrac Moba
      * @return zwraca wylosowanego randomowo Moba
      */
 
     private AbstractMonster createRandomMob() {
-        int randNbr = getRandomNumberInRange(0, 3);
+        int randNbr = createRandomNumberInRange(0, 3);
         switch (randNbr) {
             case 0:
                 return new Dwarf();
@@ -178,6 +177,13 @@ public class Board implements IRandom {
         }
     }
 
+
+    public void placeOnTheBoard(){
+        createArray();
+        setMobPosition();
+        setMaterialPosition();
+    }
+
     /**
      * Metoda szuka mobow na planszy a nastepnie zapisuje ich poycje
      */
@@ -191,11 +197,25 @@ public class Board implements IRandom {
                     aliveMobsXCord[aliveMobs] = i;
                     aliveMobsYCord[aliveMobs] = j;
                     aliveMobs++;
-                    System.out.println(aliveMobs);
                 }
             }
         }
     }
+
+    /**
+     * Metoda uzywajac metody
+     * @see Board#lookForMobs() szuka miejsc na ktorych wystepuja moby
+     * nastepnie uzywajac w petli uzywajac metod
+     * @see Board#getPositionX() losuje nowa kordynate X dla wybranego moba
+     * @see Board#getPositionY() losuje nowa kordynate Y dla wybranego moba
+     * nastepnie sprawdza czy nowe kordynaty sa puste czy systepuje na nich jakis mob/metrial
+     * jesli na na nowych kordyjatach znajduje sie material uzywa metody
+     * --------update zrobic jak abstract material sie zrobi---------
+     * jesli na nowych kordynatach znajduje sie mob takiej samej klasy uzywa metody
+     * @see AbstractMonster#merge(AbstractMonster, AbstractMonster) i z 2 mobow powstaje jeden silniejszy
+     * jesli na nowych kordynatach znajduje sie mob innej klasy uzywa metody
+     * @see AbstractMonster#fight(AbstractMonster, AbstractMonster) ktora zwraca wygranego moba
+     */
 
 
     @Override
@@ -214,7 +234,8 @@ public class Board implements IRandom {
 
                     playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
                 } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
-                    String name = playBoard[newPositionX][newPositionY].getClass().getName().toString();
+                    String name = playBoard[newPositionX][newPositionY].getClass().getName();
+
                     playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
                     playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
                     switch (name) {
@@ -234,7 +255,6 @@ public class Board implements IRandom {
                             throw new IllegalArgumentException();
                     }
 
-
                 } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
 
                     if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] != null
@@ -251,49 +271,15 @@ public class Board implements IRandom {
                             playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
 
                             aliveMobs--;
-
+                        //jesli sa roznych klas
                         } else {
                             AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
                             AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
 
-                            //nowa wersja
-                            playBoard[newPositionX][newPositionY] = a.fight(a , b);
+                            playBoard[newPositionX][newPositionY] = a.fight(a, b);
                             playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
                             aliveMobs--;
-
-
-                            //Stara wersja nowa powinna juz dzialac
-
-                            /*if (a.getAttack() > b.getAttack()) {
-                                if (a.getDefence() + a.getHealth() > b.getDefence() + b.getHealth()) {
-                                    playBoard[newPositionX][newPositionY]
-                                            = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
-
-                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
-                                    aliveMobs--;
-                                } else {
-                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
-                                    aliveMobs--;
-                                }
-                            } else {
-                                if (b.getHealth() + b.getDefence() > a.getHealth() + a.getDefence()) {
-                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
-                                    aliveMobs--;
-                                } else {
-                                    playBoard[newPositionX][newPositionY]
-                                            = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
-                                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
-                                    aliveMobs--;
-                               }
-
-                             */
-
-
                         }
                     }
                 }
@@ -301,9 +287,67 @@ public class Board implements IRandom {
         }
     }
 
-    //TODO dodac metode ktora zlicza ilosc poszczegolnych mobow
-    //TODO metoda boolean ktora sprawdza czy zostal tylko 1 gatunek na planszy
-    //TODO metoda ktora laczy wszystkie metody przy tworzeniu planszy
+    /**
+     *
+     */
+
+    private void countMobs() {
+        lookForMobs();
+        nrOfDwarfs = 0;
+        nrOfMinotaurs = 0;
+        nrOfElfs = 0;
+        nrOfOrcs = 0;
+
+        for (int i = 0; i < aliveMobs; i++) {
+            if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] instanceof Orc) {
+                nrOfOrcs++;
+            } else if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] instanceof Dwarf) {
+                nrOfDwarfs++;
+            } else if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] instanceof Elf) {
+                nrOfElfs++;
+            } else if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] instanceof Minotaur) {
+                nrOfMinotaurs++;
+            }
+        }
+    }
+
+    /**
+     *
+     * @return
+     */
+
+    public boolean onlyOneSpeciesLeft(){
+        countMobs();
+        if(nrOfOrcs == 0 && nrOfMinotaurs == 0 && nrOfElfs == 0 && nrOfDwarfs !=0) return true;
+        else if(nrOfOrcs == 0 && nrOfMinotaurs == 0 && nrOfElfs != 0 && nrOfDwarfs ==0) return true;
+        else if(nrOfOrcs == 0 && nrOfMinotaurs != 0 && nrOfElfs == 0 && nrOfDwarfs ==0) return true;
+        else if(nrOfOrcs != 0 && nrOfMinotaurs == 0 && nrOfElfs == 0 && nrOfDwarfs ==0) return true;
+
+        return false;
+    }
+
+
+    public String getInfo(){
+        countMobs();
+
+        StringBuilder sB = new StringBuilder();
+
+        sB.append("Ilosc Zywych Mobow: ");
+        sB.append(aliveMobs);
+        sB.append("\n Ilosc Zywych Orkow: ");
+        sB.append(nrOfOrcs);
+        sB.append("\n Ilosc Zywych Minotaurow: ");
+        sB.append(nrOfMinotaurs);
+        sB.append("\n Ilosc Zywych Elfow: ");
+        sB.append(nrOfElfs);
+        sB.append("\n Ilosc Zywych Karlow: ");
+        sB.append(nrOfDwarfs);
+
+
+        return sB.toString();
+    }
+
+
 
     public void wypisz(){
         int iloscZywychMobow = 0;

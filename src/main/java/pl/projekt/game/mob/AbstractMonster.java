@@ -115,7 +115,7 @@ public abstract class AbstractMonster implements IStats {
      * @param secondM 2 mob
      * @return zwraca wygranego moba
      */
-
+    // pozmieniac troche zeby bylo bardziej zbalansowane
     public AbstractMonster fight(AbstractMonster firstM, AbstractMonster secondM){
         if (firstM.getAttack() > secondM.getAttack()) {
             if (firstM.getDefence() + secondM.getHealth() > firstM.getDefence() + secondM.getHealth()) {
@@ -161,7 +161,7 @@ public abstract class AbstractMonster implements IStats {
         double attc = monster1.getAttack() + monster2.getAttack();
         double dff = monster1.getDefence() + monster2.getDefence();
 
-        String name = monster1.getClass().getName().toString();
+        String name = monster1.getClass().getName();
 
 
         switch (name) {
@@ -178,9 +178,6 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
-    public void mergeOrFight(AbstractMonster monster1, AbstractMonster monster2){
-        //TODO
-    }
 
     //Spróbuje dorobic żeby nie trzeba było kopiowac kodu,jak wiesz jak naprawić to droga wolna-ma zadziałać np Sprinst(Jewelery)
    /* protected boolean Sprinst(Class Itt)

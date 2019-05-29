@@ -1,52 +1,45 @@
 /**
  * Projekt Programowanie Obiektowe
- * @version v1.0
+ * @version beta v0.9.1
  * @author Jakub Gliwa, Kacper Ziejlo
  */
 
 package pl.projekt.simulation;
 
-import pl.projekt.game.item.AbstractItem;
-import pl.projekt.game.material.AbstractMaterials;
-import pl.projekt.game.material.Diamond;
-import pl.projekt.game.material.Iron;
-import pl.projekt.game.mob.AbstractMonster;
-import pl.projekt.game.mob.Elf;
-
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class SimulationApp {
-    private int numberOfMobs = 9;
-    private int mapSize = 4;
+    private int numberOfMobs;
+    private int mapSize;
     private Board gameBoard;
-    private String date;
     private String fileName;
+    private List<String> infoToDisplay = new ArrayList<>();
 
 
     /**
      * Metoda getMapSize pyta uzytkownika o podanie wielkosci mapy i sprawdza czy wilkosc mapy jest > 0
      */
-    private void getMapSize(){
+    private void getMapSize() {
         Scanner scan = new Scanner(System.in);
-        try{
-            System.out.println("Podaj wielkosc mapy");
-            do{
+        try {
+            do {
                 System.out.println("Podaj wielkosc mapy");
                 mapSize = scan.nextInt();
-                if(mapSize <= 0){
+                if (mapSize <= 0) {
                     System.out.println("Wielkosc mapy nie moze byc ujemna/rowna zero");
-                }else break;
-            }while (true);
+                } else break;
+            } while (true);
 
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getCause().getMessage());
-        }finally {
-            scan.close();
         }
     }
 
@@ -55,24 +48,25 @@ public class SimulationApp {
      * oraz sprawdza czy taka ilosc mobow moze zostac umieszczona na mapie
      */
 
+
+
     private void getNumberOfMobs(){
-        try {
             Scanner scan = new Scanner(System.in);
             try {
-                do {
-                    System.out.println("Podaj ilosc mobow (musi byc wieksza niz wielkosc mapy)");
+                do{
+                    System.out.println("Podaj ilosc mobow (musi byc mniejsza niz wielkosc mapy)");
                     numberOfMobs = scan.nextInt();
                     if (numberOfMobs > (mapSize * mapSize)) {
                         System.out.println("ilosc Mobow > Mapa");
                     } else break;
                 } while (true);
 
-            } finally {
-                scan.close();
-            }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getCause().getMessage());
-        }
+            }finally {
+                scan.close();
+            }
+
     }
 
     /**
@@ -87,8 +81,8 @@ public class SimulationApp {
      */
 
     private void createNewFile(){
-        date = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
-        fileName = ("symulacja:" + date + ".txt");
+        String date = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss").format(new Date());
+        fileName = ("symulacja_" + date + ".txt");
         File file = new File(fileName);
         boolean fileExists = file.exists();
         if (!fileExists) {
@@ -100,46 +94,43 @@ public class SimulationApp {
         }
 
         if (fileExists)
-            System.out.println("Plik " + fileName + " istnieje lub został utworzony");
+            System.out.println("Plik " + fileName + " został utworzony");
     }
 
 
-    public void writeFile2(String a) throws IOException {
-        FileWriter fw = new FileWriter(fileName);
-
-        for (int i = 0; i < 10; i++) {
-            fw.append("something" + i + a);
+    private void writeData(List<String> data) throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            for(String d:data) {
+                bw.write(d);
+                bw.newLine();
+            }
         }
-
-        fw.close();
     }
 
-    //TODO metoda run
-    //TODO metoda sprawdzajaca kiedy ma sie skonczyc symulacja
+    public void runApp() throws IOException{
+        int i=0;
+        getMapSize();
+        getNumberOfMobs();
+        creatGameBoard();
+        gameBoard.placeOnTheBoard();
+        createNewFile();
+        infoToDisplay.add(gameBoard.getInfo());
+        do{
+            if(gameBoard.onlyOneSpeciesLeft()) break;
+            gameBoard.move();
+            infoToDisplay.add(gameBoard.getInfo());
 
-    public static void main(String[] args) {
+            i++;
+        }while(i < 10);
+        writeData(infoToDisplay);
+    }
+
+
+    public static void main(String[] args) throws IOException {
         SimulationApp app = new SimulationApp();
-        app.creatGameBoard();
-        app.gameBoard.createArray();
-        app.gameBoard.setMobPosition();
-        app.gameBoard.setMaterialPosition();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
-        app.gameBoard.move();
-        app.gameBoard.wypisz();
+        app.runApp();
+
+
 
 
 
