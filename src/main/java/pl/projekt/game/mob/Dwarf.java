@@ -32,9 +32,16 @@ public class Dwarf extends AbstractMonster{
         @Override
         public void addAttack(double attack) { super.addAttack(attack); }
 
-
+        /**
+         * metoda zwiększa ilość posiadanego przez moba kamienia o 1
+         */
         public void collectStone(){ Stonenmb++; }
 
+        /**
+         * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Młota oraz
+         * odejmuje od ilości kawałków drewna oraz kamienia cenę za stworzenie
+         * Młota(odpowiednio 2 i 1)
+         */
         public void createHammer()
         {
                 if(Woodnmb==2 && Stonenmb==1){

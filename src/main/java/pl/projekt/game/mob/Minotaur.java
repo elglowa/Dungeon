@@ -35,10 +35,21 @@ public class Minotaur extends AbstractMonster{
     @Override
     public void addHP(double HP) { super.addHP(HP); }
 
+    /**
+     * Zwiększa ilość posiadanego przez moba żelaza o 1
+     */
     public void collectIron(){ Ironnmb++; }
 
+    /**
+     * metoda zwiększa ilość posiadanego przez moba kamienia o 1
+     */
     public void collectStone(){ Stonenmb++; }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Buzdyganu oraz
+     * odejmuje od ilości żelaza,kawałków drewna oraz kamienia cenę za stworzenie
+     * Młota(odpowiednio 1,1 i 2)
+     */
     public void createMaze(){
         if(Ironnmb == 1 && Stonenmb == 1 && Woodnmb == 2)
         {

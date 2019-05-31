@@ -34,8 +34,16 @@ public class Orc extends AbstractMonster{
     @Override
     public void addAttack(double attack) { super.addAttack(attack); }
 
-    public void collectStone(Stone st){ Stonenmb++; }
+    /**
+     * metoda zwiększa ilość posiadanego przez moba kamienia o 1
+     */
+    public void collectStone(){ Stonenmb++; }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Toporu oraz
+     * odejmuje od ilości kawałków drewna oraz kamienia cenę za stworzenie
+     * Toporu(odpowiednio 2 i 2)
+     */
     public void createAxe(){
         if(Woodnmb==2 && Stonenmb==2)
         {

@@ -25,10 +25,21 @@ public abstract class AbstractMonster implements IStats {
 
     public double getHealth() { return Health; }
 
+    /**
+     * metoda zwiększa ilość posiadanych przez moba diamentów o 1
+     */
     public void collectDiamonds(){ Diamondnmb++; }
 
+    /**
+     * metoda zwiększa ilość posiadanych przez moba kawałków drewna o 1
+     */
     public void collectWood(){ Woodnmb++; }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Biżuterii
+     * oraz odejmuje od ilości kawałków drewna i diamentów cenę za stworzenie
+     * biżuterii(odpowiednio po 1)
+     */
     public void createJewelery(){
         if(Diamondnmb==1 || Woodnmb==1) {
             for (int i = 0; i < Equipment.size(); i++) {
@@ -49,6 +60,10 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Zbroji oraz
+     * odejmuje od ilości kawałków drewna cenę za stworzenie Zbroji(3 sztuki)
+     */
     public void createArmor(){
         if(Woodnmb==3)
         {
@@ -70,6 +85,10 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Sztyletu oraz
+     * odejmuje od ilości kawałków drewna cenę za stworzenie Sztyletu(2 sztuki)
+     */
     public void createDagger() {
         if (Woodnmb == 2) {
             for (int i = 0; i < Equipment.size(); i++) {
@@ -88,6 +107,10 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Tarczy oraz
+     * odejmuje od ilości kawałków drewna cenę za stworzenie Tarczy(2 sztuki)
+     */
     public void createShield(){
         if(Woodnmb==2)
         {
