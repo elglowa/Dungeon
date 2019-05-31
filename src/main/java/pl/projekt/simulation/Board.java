@@ -233,7 +233,6 @@ public class Board implements IRandom {
 
                 playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
             } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
-                String name = playBoard[newPositionX][newPositionY].getClass().getName();
                 AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
                 b.collectMaterial(b, (AbstractMaterials)playBoard[newPositionX][newPositionY]);

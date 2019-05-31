@@ -1,10 +1,12 @@
 package pl.projekt.game.mob;
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import pl.projekt.game.IStats;
 import pl.projekt.game.item.*;
 import pl.projekt.game.material.AbstractMaterials;
 import pl.projekt.game.material.Wood;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class AbstractMonster implements IStats {
     private double Health;
@@ -14,7 +16,7 @@ public abstract class AbstractMonster implements IStats {
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
     protected int inmb = 0;
-    private ArrayList<AbstractItem> Equipment=new ArrayList<AbstractItem>();
+    private ArrayList<AbstractItem> Equipment = new ArrayList<>();
 
     public void addAttack(double Attack) { this.AttacPoints +=Attack; }
 
@@ -42,6 +44,16 @@ public abstract class AbstractMonster implements IStats {
      */
     public void collectWood(){ Woodnmb++; }
 
+    //TODO
+
+    private int createRandomNumberInRange(int min, int max) {
+        if (min >= max) {
+            throw new IllegalArgumentException("max musi byc wiekszy niz min");
+        }
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
+    }
+
     /**
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Biżuterii
      * oraz odejmuje od ilości kawałków drewna i diamentów cenę za stworzenie
@@ -66,6 +78,8 @@ public abstract class AbstractMonster implements IStats {
             Woodnmb-=1;
         }
     }
+
+
 
     /**
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Zbroji oraz
@@ -245,6 +259,78 @@ public abstract class AbstractMonster implements IStats {
                 break;
             default:
                 throw new IllegalArgumentException();
+        }
+    }
+    public void craftNewItem(AbstractMonster a){
+
+        if(a instanceof Minotaur){
+            switch (createRandomNumberInRange(1, 5)){
+                case 1:
+                    a.createJewelery();
+                    break;
+                case 2:
+                    a.createShield();
+                    break;
+                case 3:
+                    a.createArmor();
+                    break;
+                case 4:
+                    ((Minotaur) a).createMaze();
+                    break;
+                case 5:
+                    a.createDagger();
+            }
+        }
+
+        else if(a instanceof Orc){
+            switch (createRandomNumberInRange(1, 4)){
+                case 1:
+                    a.createJewelery();
+                    break;
+                case 2:
+                    a.createShield();
+                    break;
+                case 3:
+                    a.createArmor();
+                    break;
+                case 4:
+                    ((Orc)a).createAxe();
+                    break;
+            }
+        }
+
+        else if(a instanceof Dwarf){
+            switch (createRandomNumberInRange(1, 4)){
+                case 1:
+                    a.createJewelery();
+                    break;
+                case 2:
+                    a.createShield();
+                    break;
+                case 3:
+                    a.createArmor();
+                    break;
+                case 4:
+                    ((Dwarf)a).createHammer();
+                    break;
+            }
+        }
+
+        else if(a instanceof Elf){
+            switch (createRandomNumberInRange(1, 4)){
+                case 1:
+                    a.createJewelery();
+                    break;
+                case 2:
+                    a.createShield();
+                    break;
+                case 3:
+                    a.createArmor();
+                    break;
+                case 4:
+                    ((Elf)a).createSword();
+                    break;
+            }
         }
     }
 
