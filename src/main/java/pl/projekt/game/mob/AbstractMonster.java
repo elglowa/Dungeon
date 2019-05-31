@@ -200,9 +200,6 @@ public abstract class AbstractMonster implements IStats {
     public void collectMaterial(AbstractMonster monster1, AbstractMaterials materials){
 
         String name = materials.getClass().getName();
-        System.out.println(monster1.getClass().getName());
-        System.out.println(materials.getClass().getName());
-        System.out.println((materials).getWeight());
         switch (name) {
             case "pl.projekt.game.material.Wood":
                 if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())){
@@ -211,17 +208,40 @@ public abstract class AbstractMonster implements IStats {
                 }
                 break;
             case "pl.projekt.game.material.Stone":
-                if(monster1 instanceof Orc) ((Orc) monster1).collectStone();
-                else if(monster1 instanceof Minotaur) ((Minotaur) monster1).collectStone();
+                if(monster1 instanceof Orc) {
+                    if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())) {
+                        ((Orc) monster1).collectStone();
+                        monster1.setEqweight(monster1.getEqweight() - materials.getWeight());
+                    }
+
+                }
+                else if(monster1 instanceof Minotaur)
+                {
+                    if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())) {
+                        ((Minotaur) monster1).collectStone();
+                        monster1.setEqweight(monster1.getEqweight() - materials.getWeight());
+                    }
+                }
                 break;
             case "pl.projekt.game.material.Iron":
-                //TODO spr czy nie za ciezkie
-                if(monster1 instanceof Minotaur) ((Minotaur) monster1).collectIron();
-                else if(monster1 instanceof Elf) ((Elf) monster1).collectIron();
+                if(monster1 instanceof Minotaur){
+                    if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())) {
+                        ((Minotaur) monster1).collectIron();
+                        monster1.setEqweight(monster1.getEqweight() - materials.getWeight());
+                    }
+                }
+                else if(monster1 instanceof Elf){
+                    if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())) {
+                        ((Elf) monster1).collectIron();
+                        monster1.setEqweight(monster1.getEqweight() - materials.getWeight());
+                    }
+                }
                 break;
             case "pl.projekt.game.material.Diamond":
-                //TODO spr czy nie za ciezkie
-                monster1.collectDiamonds();
+                if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())){
+                    monster1.collectDiamonds();
+                    monster1.setEqweight(monster1.getEqweight() - materials.getWeight());
+                }
                 break;
             default:
                 throw new IllegalArgumentException();
