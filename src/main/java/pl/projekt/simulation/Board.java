@@ -223,52 +223,51 @@ public class Board implements IRandom {
 
         lookForMobs();
 
-        for(int i = 0; i < aliveMobs; i++) {
-            for (int k = 0; k < aliveMobs; k++) {
-                int newPositionX = getPositionX();
-                int newPositionY = getPositionY();
+        for (int i = 0; i < aliveMobs; i++) {
+            int newPositionX = getPositionX();
+            int newPositionY = getPositionY();
 
-                if (playBoard[newPositionX][newPositionY] == null) {
+            if (playBoard[newPositionX][newPositionY] == null) {
 
-                    playBoard[newPositionX][newPositionY] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                playBoard[newPositionX][newPositionY] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
-                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-                } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
-                    String name = playBoard[newPositionX][newPositionY].getClass().getName();
-                    AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+            } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMaterials) {
+                String name = playBoard[newPositionX][newPositionY].getClass().getName();
+                AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
-                    playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
-                    playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+                b.collectMaterial(b, (AbstractMaterials)playBoard[newPositionX][newPositionY]);
 
-                    b.collectMaterial(name, b);
-
-
-                } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
-
-                    if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] != null
-                            && playBoard[newPositionX][newPositionY] != null) {
-                        //Jesli sa tej samej klasy
-                        if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]].getClass()
-                                == playBoard[newPositionX][newPositionY].getClass()) {
-
-                            AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
-                            AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
-
-                            playBoard[newPositionX][newPositionY] = a.merge(a, b);
-
-                            playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
-                            aliveMobs--;
-                        //jesli sa roznych klas
-                        } else {
-                            AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
-                            AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+                playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
 
 
-                            playBoard[newPositionX][newPositionY] = a.fight(a, b);
-                            playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-                            aliveMobs--;
-                        }
+
+            } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
+
+                if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] != null
+                        && playBoard[newPositionX][newPositionY] != null) {
+                    //Jesli sa tej samej klasy
+                    if (playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]].getClass()
+                            == playBoard[newPositionX][newPositionY].getClass()) {
+
+                        AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
+                        AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+
+                        playBoard[newPositionX][newPositionY] = a.merge(a, b);
+
+                        playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+
+                        aliveMobs--;
+                     //jesli sa roznych klas
+                    } else {
+                        AbstractMonster a = (AbstractMonster) playBoard[newPositionX][newPositionY];
+                        AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
+
+
+                        playBoard[newPositionX][newPositionY] = a.fight(a, b);
+                        playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
+                        aliveMobs--;
                     }
                 }
             }

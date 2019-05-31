@@ -2,6 +2,8 @@ package pl.projekt.game.mob;
 import pl.projekt.game.IStats;
 import pl.projekt.game.item.*;
 import pl.projekt.game.material.AbstractMaterials;
+import pl.projekt.game.material.Wood;
+
 import java.util.ArrayList;
 
 public abstract class AbstractMonster implements IStats {
@@ -27,6 +29,8 @@ public abstract class AbstractMonster implements IStats {
     public double getHealth() { return Health; }
 
     public int getEqweight() { return Eqweight; }
+
+    public void setEqweight(int Eqweight) { this.Eqweight = Eqweight; }
 
     /**
      * metoda zwiększa ilość posiadanych przez moba diamentów o 1
@@ -193,24 +197,37 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
-    public void collectMaterial(String name, AbstractMonster monster1){
+    public void collectMaterial(AbstractMonster monster1, AbstractMaterials materials){
+
+        String name = materials.getClass().getName();
+        System.out.println(monster1.getClass().getName());
+        System.out.println(materials.getClass().getName());
+        System.out.println((materials).getWeight());
         switch (name) {
             case "pl.projekt.game.material.Wood":
-
+                if(materials.isNotToHeavy((materials).getWeight(), monster1.getEqweight())){
+                    monster1.collectWood();
+                    monster1.setEqweight(monster1.getEqweight() - materials.getWeight());
+                }
                 break;
             case "pl.projekt.game.material.Stone":
-                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                if(monster1 instanceof Orc) ((Orc) monster1).collectStone();
+                else if(monster1 instanceof Minotaur) ((Minotaur) monster1).collectStone();
                 break;
             case "pl.projekt.game.material.Iron":
-                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                //TODO spr czy nie za ciezkie
+                if(monster1 instanceof Minotaur) ((Minotaur) monster1).collectIron();
+                else if(monster1 instanceof Elf) ((Elf) monster1).collectIron();
                 break;
             case "pl.projekt.game.material.Diamond":
-                //TODO spr czy mob moze brac material + dodac ten material do inventory
+                //TODO spr czy nie za ciezkie
+                monster1.collectDiamonds();
                 break;
             default:
                 throw new IllegalArgumentException();
         }
     }
+
 
 
     //Spróbuje dorobic żeby nie trzeba było kopiowac kodu,jak wiesz jak naprawić to droga wolna-ma zadziałać np Sprinst(Jewelery)

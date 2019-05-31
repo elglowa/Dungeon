@@ -5,4 +5,8 @@ public class Diamond extends AbstractMaterials {
     public Diamond(){ }
 
     public Diamond(int weight) { this.weight = weight; }
+
+    public int getWeight(){
+        return this.weight;
+    }
 }

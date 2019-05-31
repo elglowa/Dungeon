@@ -6,4 +6,8 @@ public class Iron extends AbstractMaterials {
     public Iron(){}
 
     public Iron(int weight) { this.weight = weight; }
+
+    public int getWeight(){
+        return this.weight;
+    }
 }

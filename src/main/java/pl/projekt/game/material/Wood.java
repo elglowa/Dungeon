@@ -6,4 +6,8 @@ public class Wood extends AbstractMaterials {
     public Wood() { }
 
     public Wood(int weight) { this.weight = weight; }
+
+    public int getWeight(){
+        return this.weight;
+    }
 }

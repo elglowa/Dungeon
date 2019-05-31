@@ -7,4 +7,8 @@ public class Stone extends AbstractMaterials {
 
     public Stone(int weight) { this.weight = weight; }
 
+    public int getWeight(){
+        return this.weight;
+    }
+
 }
