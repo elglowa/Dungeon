@@ -9,6 +9,7 @@ public class Elf extends AbstractMonster {
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
+    private int Eqweight=70;
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
     private int Ironnmb = 0;
@@ -32,17 +33,16 @@ public class Elf extends AbstractMonster {
     @Override
     public void addHP(double HP) { this.healthPoints += HP; }
 
-    @Override
-    public double getAttack() { return this.attacPoints; }
-
-    @Override
-    public double getDefence() { return this.defencePoints; }
-
-    @Override
-    public double getHealth() {return this.healthPoints; }
-
+    /**
+     * Zwiększa ilość posiadanego przez moba żelaza o 1
+     */
     public void collectIron(){ Ironnmb++; }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Miecza oraz
+     * odejmuje od ilości żelaza oraz kawałków drewna cenę za stworzenie Zbroji
+     * (Odpowiednio 2 i 1)
+     */
     public void createSword(){
         if(Ironnmb == 2 && Woodnmb == 1)
         {

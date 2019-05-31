@@ -8,6 +8,7 @@ public abstract class AbstractMonster implements IStats {
     private double Health;
     private double DefencePoints;
     private double AttacPoints;
+    private int Eqweight;
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
     protected int inmb = 0;
@@ -25,10 +26,23 @@ public abstract class AbstractMonster implements IStats {
 
     public double getHealth() { return Health; }
 
+    public int getEqweight() { return Eqweight; }
+
+    /**
+     * metoda zwiększa ilość posiadanych przez moba diamentów o 1
+     */
     public void collectDiamonds(){ Diamondnmb++; }
 
+    /**
+     * metoda zwiększa ilość posiadanych przez moba kawałków drewna o 1
+     */
     public void collectWood(){ Woodnmb++; }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Biżuterii
+     * oraz odejmuje od ilości kawałków drewna i diamentów cenę za stworzenie
+     * biżuterii(odpowiednio po 1)
+     */
     public void createJewelery(){
         if(Diamondnmb==1 || Woodnmb==1) {
             for (int i = 0; i < Equipment.size(); i++) {
@@ -49,6 +63,10 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Zbroji oraz
+     * odejmuje od ilości kawałków drewna cenę za stworzenie Zbroji(3 sztuki)
+     */
     public void createArmor(){
         if(Woodnmb==3)
         {
@@ -70,6 +88,10 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Sztyletu oraz
+     * odejmuje od ilości kawałków drewna cenę za stworzenie Sztyletu(2 sztuki)
+     */
     public void createDagger() {
         if (Woodnmb == 2) {
             for (int i = 0; i < Equipment.size(); i++) {
@@ -88,6 +110,10 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Tarczy oraz
+     * odejmuje od ilości kawałków drewna cenę za stworzenie Tarczy(2 sztuki)
+     */
     public void createShield(){
         if(Woodnmb==2)
         {
@@ -170,7 +196,7 @@ public abstract class AbstractMonster implements IStats {
     public void collectMaterial(String name, AbstractMonster monster1){
         switch (name) {
             case "pl.projekt.game.material.Wood":
-                //TODO spr czy mob moze brac material + dodac ten material do inventory
+
                 break;
             case "pl.projekt.game.material.Stone":
                 //TODO spr czy mob moze brac material + dodac ten material do inventory
