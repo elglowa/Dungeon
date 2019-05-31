@@ -8,6 +8,7 @@ public abstract class AbstractMonster implements IStats {
     private double Health;
     private double DefencePoints;
     private double AttacPoints;
+    private int Eqweight;
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
     protected int inmb = 0;
@@ -24,6 +25,8 @@ public abstract class AbstractMonster implements IStats {
     public double getDefence() { return DefencePoints; }
 
     public double getHealth() { return Health; }
+
+    public int getEqweight() { return Eqweight; }
 
     /**
      * metoda zwiększa ilość posiadanych przez moba diamentów o 1
@@ -193,7 +196,7 @@ public abstract class AbstractMonster implements IStats {
     public void collectMaterial(String name, AbstractMonster monster1){
         switch (name) {
             case "pl.projekt.game.material.Wood":
-                //TODO spr czy mob moze brac material + dodac ten material do inventory
+
                 break;
             case "pl.projekt.game.material.Stone":
                 //TODO spr czy mob moze brac material + dodac ten material do inventory

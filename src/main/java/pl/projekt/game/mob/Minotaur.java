@@ -11,6 +11,7 @@ public class Minotaur extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
+    private int Eqweight=90;
     private int Ironnmb=0;
     private int Stonenmb=0;
     private int Woodnmb=0;

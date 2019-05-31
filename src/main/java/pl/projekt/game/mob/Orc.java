@@ -11,6 +11,7 @@ public class Orc extends AbstractMonster{
     private double healthPoints = 10;
     private double defencePoints = 10;
     private double attacPoints = 5;
+    private int Eqweight=75;
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
     private int Stonenmb = 0;
