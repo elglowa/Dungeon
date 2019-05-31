@@ -236,6 +236,7 @@ public class Board implements IRandom {
                 AbstractMonster b = (AbstractMonster) playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
 
                 b.collectMaterial(b, (AbstractMaterials)playBoard[newPositionX][newPositionY]);
+                b.craftNewItem(b);
 
                 playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
                 playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
@@ -312,7 +313,10 @@ public class Board implements IRandom {
         return false;
     }
 
-
+    /**
+     * Metoda tworzy nowego stringa z informacjami o ilosci mobow po rundzie
+     * @return zwraca String z informacjami o mobach
+     */
     public String getInfo(){
         countMobs();
 

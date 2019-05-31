@@ -30,19 +30,19 @@ public abstract class AbstractMonster implements IStats {
 
     public double getHealth() { return Health; }
 
-    public int getEqweight() { return Eqweight; }
+    private int getEqweight() { return Eqweight; }
 
-    public void setEqweight(int Eqweight) { this.Eqweight = Eqweight; }
+    private void setEqweight(int Eqweight) { this.Eqweight = Eqweight; }
 
     /**
      * metoda zwiększa ilość posiadanych przez moba diamentów o 1
      */
-    public void collectDiamonds(){ Diamondnmb++; }
+    private void collectDiamonds(){ Diamondnmb++; }
 
     /**
      * metoda zwiększa ilość posiadanych przez moba kawałków drewna o 1
      */
-    public void collectWood(){ Woodnmb++; }
+    private void collectWood(){ Woodnmb++; }
 
     //TODO
 
@@ -59,10 +59,10 @@ public abstract class AbstractMonster implements IStats {
      * oraz odejmuje od ilości kawałków drewna i diamentów cenę za stworzenie
      * biżuterii(odpowiednio po 1)
      */
-    public void createJewelery(){
+    private void createJewelery(){
         if(Diamondnmb==1 || Woodnmb==1) {
-            for (int i = 0; i < Equipment.size(); i++) {
-                if (Equipment.get(i) instanceof Jewelery) {
+            for (AbstractItem equipment : Equipment) {
+                if (equipment instanceof Jewelery) {
                     inmb++;
                 }
             }
@@ -85,12 +85,11 @@ public abstract class AbstractMonster implements IStats {
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Zbroji oraz
      * odejmuje od ilości kawałków drewna cenę za stworzenie Zbroji(3 sztuki)
      */
-    public void createArmor(){
+    private void createArmor(){
         if(Woodnmb==3)
         {
-            for(int i=0;i<Equipment.size();i++)
-            {
-                if(Equipment.get(i) instanceof Armor)
+            for (AbstractItem equipment : Equipment) {
+                if (equipment instanceof Armor)
                     inmb++;
             }
             if(inmb==0)
@@ -110,10 +109,10 @@ public abstract class AbstractMonster implements IStats {
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Sztyletu oraz
      * odejmuje od ilości kawałków drewna cenę za stworzenie Sztyletu(2 sztuki)
      */
-    public void createDagger() {
+    private void createDagger() {
         if (Woodnmb == 2) {
-            for (int i = 0; i < Equipment.size(); i++) {
-                if (Equipment.get(i) instanceof Dagger)
+            for (AbstractItem equipment : Equipment) {
+                if (equipment instanceof Dagger)
                     inmb++;
             }
             if (inmb == 0) {
@@ -132,12 +131,11 @@ public abstract class AbstractMonster implements IStats {
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Tarczy oraz
      * odejmuje od ilości kawałków drewna cenę za stworzenie Tarczy(2 sztuki)
      */
-    public void createShield(){
+    private void createShield(){
         if(Woodnmb==2)
         {
-            for(int i=0;i<Equipment.size();i++)
-            {
-                if(Equipment.get(i) instanceof Shield)
+            for (AbstractItem equipment : Equipment) {
+                if (equipment instanceof Shield)
                     inmb++;
             }
             if(inmb==0)
@@ -211,6 +209,12 @@ public abstract class AbstractMonster implements IStats {
         }
     }
 
+    /**
+     *
+     * @param monster1
+     * @param materials
+     */
+
     public void collectMaterial(AbstractMonster monster1, AbstractMaterials materials){
 
         String name = materials.getClass().getName();
@@ -261,74 +265,79 @@ public abstract class AbstractMonster implements IStats {
                 throw new IllegalArgumentException();
         }
     }
-    public void craftNewItem(AbstractMonster a){
 
-        if(a instanceof Minotaur){
+    /**
+     *
+     * @param monster
+     */
+    public void craftNewItem(AbstractMonster monster){
+
+        if(monster instanceof Minotaur){
             switch (createRandomNumberInRange(1, 5)){
                 case 1:
-                    a.createJewelery();
+                    monster.createJewelery();
                     break;
                 case 2:
-                    a.createShield();
+                    monster.createShield();
                     break;
                 case 3:
-                    a.createArmor();
+                    monster.createArmor();
                     break;
                 case 4:
-                    ((Minotaur) a).createMaze();
+                    ((Minotaur) monster).createMaze();
                     break;
                 case 5:
-                    a.createDagger();
+                    monster.createDagger();
             }
         }
 
-        else if(a instanceof Orc){
+        else if(monster instanceof Orc){
             switch (createRandomNumberInRange(1, 4)){
                 case 1:
-                    a.createJewelery();
+                    monster.createJewelery();
                     break;
                 case 2:
-                    a.createShield();
+                    monster.createShield();
                     break;
                 case 3:
-                    a.createArmor();
+                    monster.createArmor();
                     break;
                 case 4:
-                    ((Orc)a).createAxe();
-                    break;
-            }
-        }
-
-        else if(a instanceof Dwarf){
-            switch (createRandomNumberInRange(1, 4)){
-                case 1:
-                    a.createJewelery();
-                    break;
-                case 2:
-                    a.createShield();
-                    break;
-                case 3:
-                    a.createArmor();
-                    break;
-                case 4:
-                    ((Dwarf)a).createHammer();
+                    ((Orc)monster).createAxe();
                     break;
             }
         }
 
-        else if(a instanceof Elf){
+        else if(monster instanceof Dwarf){
             switch (createRandomNumberInRange(1, 4)){
                 case 1:
-                    a.createJewelery();
+                    monster.createJewelery();
                     break;
                 case 2:
-                    a.createShield();
+                    monster.createShield();
                     break;
                 case 3:
-                    a.createArmor();
+                    monster.createArmor();
                     break;
                 case 4:
-                    ((Elf)a).createSword();
+                    ((Dwarf)monster).createHammer();
+                    break;
+            }
+        }
+
+        else if(monster instanceof Elf){
+            switch (createRandomNumberInRange(1, 4)){
+                case 1:
+                    monster.createJewelery();
+                    break;
+                case 2:
+                    monster.createShield();
+                    break;
+                case 3:
+                    monster.createArmor();
+                    break;
+                case 4:
+                    ((Elf)monster).createSword();
                     break;
             }
         }
