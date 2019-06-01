@@ -1,13 +1,17 @@
 package pl.projekt.game.mob;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import pl.projekt.game.IStats;
 import pl.projekt.game.item.*;
 import pl.projekt.game.material.AbstractMaterials;
-import pl.projekt.game.material.Wood;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Klasa abstrakcyjna po której dziedziczy każdy mob.Dzięki niej potrafią tworzyć
+ * sztylet,zbroje czy tarczę oraz zbierać diamenty i drewno.Znajdują się
+ * w niej metody na zbieranie materiałów,tworzenie przedmiotów oraz walkę
+ * i łączenie się mobów.
+ */
 public abstract class AbstractMonster implements IStats {
     private double Health;
     private double DefencePoints;
@@ -210,9 +214,10 @@ public abstract class AbstractMonster implements IStats {
     }
 
     /**
-     *
-     * @param monster1
-     * @param materials
+     * Metoda sprawdzwa czy materiał może zostać zebrany przez moba oraz zmiejsza posiadane
+     * przez moba wlne miejsce na materiały
+     * @param monster1 mob który zbiera materiał
+     * @param materials zbierany materiał
      */
 
     public void collectMaterial(AbstractMonster monster1, AbstractMaterials materials){
@@ -267,8 +272,8 @@ public abstract class AbstractMonster implements IStats {
     }
 
     /**
-     *
-     * @param monster
+     * metoda w której mob wybiera jaki item ma stworzyć
+     * @param monster mob który tworzy itemter
      */
     public void craftNewItem(AbstractMonster monster){
 
@@ -342,27 +347,4 @@ public abstract class AbstractMonster implements IStats {
             }
         }
     }
-
-
-
-    //Spróbuje dorobic żeby nie trzeba było kopiowac kodu,jak wiesz jak naprawić to droga wolna-ma zadziałać np Sprinst(Jewelery)
-   /* protected boolean Sprinst(Class Itt)
-    {
-        for(int i=0;i<Equipment.size();i++)
-        {
-            if(Itt.isInstance(Equipment.get(i)))
-                inmb++;
-        }
-        if(inmb==0)
-        {
-            inmb=0;
-            return true;
-        }
-        else
-        {
-            inmb=0;
-            return false;
-        }
-    }*/
-
 }

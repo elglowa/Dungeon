@@ -2,15 +2,17 @@ package pl.projekt.game.mob;
 
 import pl.projekt.game.item.AbstractItem;
 import pl.projekt.game.item.Maze;
-import pl.projekt.game.material.AbstractMaterials;
-import pl.projekt.game.material.Iron;
-
 import java.util.ArrayList;
 
+/**
+ * Minotaur jest jednym z 4 ras pojawiających się w symulacji.
+ * Charakteryzuje się wysokim atakiem oraz niskim życiem oraz
+ * obroną.Potrafi wytorzyć Buzdygan.
+ */
 public class Minotaur extends AbstractMonster{
-    private double healthPoints = 10;
-    private double defencePoints = 10;
-    private double attacPoints = 5;
+    private double healthPoints = 6;
+    private double defencePoints = 5;
+    private double attacPoints = 12;
     private int Eqweight=90;
     private int Ironnmb=0;
     private int Stonenmb=0;
@@ -49,7 +51,7 @@ public class Minotaur extends AbstractMonster{
     /**
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Buzdyganu oraz
      * odejmuje od ilości żelaza,kawałków drewna oraz kamienia cenę za stworzenie
-     * Młota(odpowiednio 1,1 i 2)
+     * Buzdyganu(odpowiednio 1,1 i 2)
      */
     public void createMaze(){
         if(Ironnmb == 1 && Stonenmb == 1 && Woodnmb == 2)

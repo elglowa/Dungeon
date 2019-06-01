@@ -1,5 +1,10 @@
 package pl.projekt.game.material;
 
+/**
+ * Klasa abstrakcyjna po której dziedziczą wszystkie materiały.
+ * Znajduje się tutaj matoda która sprawdza czy materiał nie jest
+ * za ciężki dla moba.
+ */
 public abstract class AbstractMaterials {
     /**
      * Metoda sprawdza czy w ekwipunku mob nie ma za duzo przedmiotow 1 rodzaju

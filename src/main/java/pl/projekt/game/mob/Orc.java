@@ -2,15 +2,17 @@ package pl.projekt.game.mob;
 
 import pl.projekt.game.item.AbstractItem;
 import pl.projekt.game.item.Axe;
-import pl.projekt.game.material.AbstractMaterials;
-import pl.projekt.game.material.Stone;
-
 import java.util.ArrayList;
 
+/**
+ * Ork jest jednym z 4 ras pojawiających się w symulacji.
+ * Charakteryzuje się dużym życiem oraz średnim atakiem oraz
+ * defensywą.Potrafi tworzyć Topór.
+ */
 public class Orc extends AbstractMonster{
     private double healthPoints = 10;
-    private double defencePoints = 10;
-    private double attacPoints = 5;
+    private double defencePoints = 7;
+    private double attacPoints = 7;
     private int Eqweight=75;
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
