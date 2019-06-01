@@ -1,5 +1,9 @@
 package pl.projekt.game.material;
 
+/**
+ * Materiał dostępny dla każdego moba.Można dzięki niemu stworzyć
+ * miemal każdy przedmiot w symulacji.
+ */
 public class Wood extends AbstractMaterials {
     private int weight = 5;
 

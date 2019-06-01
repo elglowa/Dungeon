@@ -3,6 +3,9 @@ package pl.projekt.game.item;
 import pl.projekt.game.IStats;
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Klasa abstrakcyjna po której dziedziczą wszystie przedmioty.
+ */
 public abstract class AbstractItem implements IStats
 {
 

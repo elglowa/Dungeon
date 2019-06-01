@@ -1,12 +1,16 @@
 package pl.projekt.game.mob;
 
 import pl.projekt.game.item.AbstractItem;
-import pl.projekt.game.item.Dagger;
-
+import pl.projekt.game.item.Hammer;
 import java.util.ArrayList;
 
+/**
+ * Krasnolud jest jednym z 4 ras pojawiających się w symulacji.
+ * Charakteryzuje się wysoką obroną,średnim życiem i niskim atakiem.
+ * Posiada możliwość tworzenia Młota.
+ */
 public class Dwarf extends AbstractMonster{
-        private double healthPoints = 10;
+        private double healthPoints = 8;
         private double defencePoints = 10;
         private double attacPoints = 5;
         private int Eqweight=80;
@@ -48,12 +52,12 @@ public class Dwarf extends AbstractMonster{
                 if(Woodnmb==2 && Stonenmb==1){
                 for(int i=0;i<Equipment.size();i++)
                 {
-                        if(Equipment.get(i) instanceof Dagger)
+                        if(Equipment.get(i) instanceof Hammer)
                                 inmb++;
                 }
                 if(inmb==0)
                 {
-                        AbstractItem D1=new Dagger(this);
+                        AbstractItem D1=new Hammer(this);
                         Equipment.add(D1);
                         D1.addAttack(0);
                         D1.addArmour(0);

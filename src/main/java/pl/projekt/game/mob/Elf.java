@@ -1,14 +1,18 @@
 package pl.projekt.game.mob;
-import pl.projekt.game.item.AbstractItem;
-import pl.projekt.game.item.Dagger;
-import pl.projekt.game.item.Sword;
 
+import pl.projekt.game.item.AbstractItem;
+import pl.projekt.game.item.Sword;
 import java.util.ArrayList;
 
+/**
+ * Elf jest jednym z 4 ras pojawiających się w symulacji.
+ * Charakteryzuje się standardowymi statystykami oraz możliwością
+ * stworzenia Miecza.
+ */
 public class Elf extends AbstractMonster {
-    private double healthPoints = 10;
-    private double defencePoints = 10;
-    private double attacPoints = 5;
+    private double healthPoints = 9;
+    private double defencePoints = 9;
+    private double attacPoints = 6;
     private int Eqweight=70;
     private int Woodnmb = 0;
     private int Diamondnmb = 0;
@@ -40,7 +44,7 @@ public class Elf extends AbstractMonster {
 
     /**
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Miecza oraz
-     * odejmuje od ilości żelaza oraz kawałków drewna cenę za stworzenie Zbroji
+     * odejmuje od ilości żelaza oraz kawałków drewna cenę za stworzenie Miecza
      * (Odpowiednio 2 i 1)
      */
     public void createSword(){

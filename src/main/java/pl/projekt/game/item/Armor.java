@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostępny dla każdego moba.Zwiększa znaczaco ilość punktów
+ * defensywy oraz nieznacząco zdrowie.
+ */
 public class Armor extends AbstractItem
 {
     private AbstractMonster Mob1;

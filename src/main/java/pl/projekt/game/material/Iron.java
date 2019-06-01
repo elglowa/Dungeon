@@ -1,5 +1,9 @@
 package pl.projekt.game.material;
 
+/**
+ * Materiał który może zostać zebrany przez Elfa oraz Minotaura.
+ * Służy do stworzenia Buzdyganu oraz Miecza.
+ */
 public class Iron extends AbstractMaterials {
     private int weight = 10;
 
