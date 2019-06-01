@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostępny wyłącznie dla Krasnoluda.
+ * Zwiększa nieznacznie atak oraz życie.
+ */
 public class Hammer extends AbstractItem
 {
     private AbstractMonster Mob1;
@@ -36,7 +40,7 @@ public class Hammer extends AbstractItem
      */
     @Override
     public void addHP(double hp) {
-        Mob1.addHP(hp+Mob1.getHealth()*0.02);
+        Mob1.addHP(HpPoints+hp+Mob1.getHealth()*0.02);
     }
 
     /**

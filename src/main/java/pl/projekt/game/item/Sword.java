@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostępny wyłącznie dla Elfa.
+ * Zwiększa znacznie atak moba.
+ */
 public class Sword extends AbstractItem
 {
     private AbstractMonster Mob1;

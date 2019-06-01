@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostępny tylko dla Orka.Zwiększa znacznie atak,ale zmniejsza
+ * nieznacznie defensywę.
+ */
 public class Axe extends AbstractItem
 {
     private AbstractMonster Mob1;

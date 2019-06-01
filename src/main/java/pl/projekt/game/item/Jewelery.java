@@ -1,6 +1,10 @@
 package pl.projekt.game.item;
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostępny dla wszystkich mobów.Nieznacznie
+ * zwiększa wszystkie statystyki.
+ */
 public class Jewelery extends AbstractItem
 {
     private AbstractMonster Mob1;
