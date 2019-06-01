@@ -11,7 +11,6 @@ public abstract class AbstractMaterials {
     public boolean isNotToHeavy(int weight, int maxWeight){
         if (weight >= maxWeight) return true;
         return false;
-
     }
 
     public abstract int getWeight();

@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Projekt Programowanie Obiektowe
- * @version beta v0.9.1
+ * Glowna klasa programu posiada metode main oraz obsluguje inne klasy
+ * @version v0.9.1
  * @author Jakub Gliwa, Kacper Ziejlo
  */
 
@@ -21,11 +21,14 @@ public class SimulationApp {
     private int mapSize;
     private Board gameBoard;
     private String fileName;
+    /**
+     * lista typu string przechowujaca dane do wypisania do pliku
+     */
     private List<String> infoToDisplay = new ArrayList<>();
 
 
     /**
-     * Metoda getMapSize pyta uzytkownika o podanie wielkosci mapy i sprawdza czy wilkosc mapy jest > 0
+     * Metoda getMapSize pyta uzytkownika o podanie wielkosci mapy i sprawdza czy wilkosc mapy jest wieksza niz 0
      */
     private void getMapSize() {
         Scanner scan = new Scanner(System.in);
@@ -93,7 +96,7 @@ public class SimulationApp {
 
     /**
      * Metoda zapisuje liste String do pliku
-     * @param data przyjmuje liste<String>
+     * @param data przyjmuje liste typu String
      */
 
     private void writeData(List<String> data) {

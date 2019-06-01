@@ -1,9 +1,7 @@
 package pl.projekt.game.mob;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import pl.projekt.game.IStats;
 import pl.projekt.game.item.*;
 import pl.projekt.game.material.AbstractMaterials;
-import pl.projekt.game.material.Wood;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -44,7 +42,12 @@ public abstract class AbstractMonster implements IStats {
      */
     private void collectWood(){ Woodnmb++; }
 
-    //TODO
+    /**
+     * metoda ktora losuje randomowa liczbe w zakresie
+     * @param min minimalna liczba z zakresu
+     * @param max maksymalna liczba z zakresu
+     * @return zwraca ta liczbe
+     */
 
     private int createRandomNumberInRange(int min, int max) {
         if (min >= max) {
@@ -78,8 +81,6 @@ public abstract class AbstractMonster implements IStats {
             Woodnmb-=1;
         }
     }
-
-
 
     /**
      * metoda tworzy oraz dodaje do Ekwipunku moba jedną sztukę Zbroji oraz
@@ -157,7 +158,7 @@ public abstract class AbstractMonster implements IStats {
      * @param secondM 2 mob
      * @return zwraca wygranego moba
      */
-    // pozmieniac troche zeby bylo bardziej zbalansowane
+
     public AbstractMonster fight(AbstractMonster firstM, AbstractMonster secondM){
         if (firstM.getAttack() > secondM.getAttack()) {
             if (firstM.getDefence() + secondM.getHealth() > firstM.getDefence() + secondM.getHealth()) {
@@ -210,9 +211,9 @@ public abstract class AbstractMonster implements IStats {
     }
 
     /**
-     *
-     * @param monster1
-     * @param materials
+     * Metoda sluzy do zbierania materialow z planszy oraz sprawdzenia czy dany mob moze podniesc material
+     * @param monster1 mob
+     * @param materials material
      */
 
     public void collectMaterial(AbstractMonster monster1, AbstractMaterials materials){
@@ -267,8 +268,9 @@ public abstract class AbstractMonster implements IStats {
     }
 
     /**
-     *
-     * @param monster
+     * Metoda sluzy do tworzenia nowych przedmiotow z przedmoiotow znajdujacych
+     * sie w ekwipunku
+     * @param monster mob ktory bedzie craftowal itemy
      */
     public void craftNewItem(AbstractMonster monster){
 

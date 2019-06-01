@@ -14,7 +14,12 @@ import pl.projekt.game.mob.Orc;
 
 import java.util.Random;
 
+/**
+ *  Klasa, na której obiekcie pojawiają się materiały oraz moby walczą/łączą się
+ */
+
 public class Board implements IRandom {
+
     private int size;
     private int mobs;
     private int aliveMobs = 0;
@@ -25,7 +30,6 @@ public class Board implements IRandom {
     private int nrOfMinotaurs;
     private int nrOfOrcs;
     private Object[][] playBoard;
-
 
     public Board(int size, int mobs) {
         this.size = size;
@@ -59,8 +63,8 @@ public class Board implements IRandom {
     }
 
     /**
-     * Metoda za pomoca
-     * @see Board#createRandomNumberInRange(int, int)  losuje nowa kordynate X
+     * Metoda losuje nowa kordynate X
+     * @see Board#createRandomNumberInRange(int, int)
      * @return zwraca kordynate X
      */
 
@@ -68,17 +72,17 @@ public class Board implements IRandom {
     public int getPositionX() { return createRandomNumberInRange(0, size - 1); }
 
     /**
-     * Metoda za pomoca
-     * @see Board#createRandomNumberInRange(int, int)  losuje nowa kordynate Y
+     * Metoda losuje nowa kordynate Y
+     * @see Board#createRandomNumberInRange(int, int)
      * @return zwraca kordynate Y
      */
 
     public int getPositionY() { return createRandomNumberInRange(0, size - 1); }
 
     /**
-     * Metoda uzywajac metody
-     * @see Board#createRandomNumberInRange(int, int) losuje randomowa liczbe w przedziale od 0 do 3
+     * Metoda uzywajac metody createRandomNumberInRange losuje randomowa liczbe w przedziale od 0 do 3
      * a nastepie uzywa instrukcji switch zeby wybrac material
+     * @see Board#createRandomNumberInRange(int, int)
      * @return zwraca wylosowany ranodomowo material
      */
 
@@ -99,9 +103,9 @@ public class Board implements IRandom {
     }
 
     /**
-     * Metoda uzywajac metody
-     * @see Board#createRandomNumberInRange(int, int) losuje randomowa liczbe w przedziale od 0 do 3
+     * Metoda uzywajac metody createRandomNumberInRange losuje randomowa liczbe w przedziale od 0 do 3
      * a nastepie uzywa instrukcji switch zeby wybrac Moba
+     * @see Board#createRandomNumberInRange(int, int)
      * @return zwraca wylosowanego randomowo Moba
      */
 
@@ -122,12 +126,11 @@ public class Board implements IRandom {
     }
 
     /**
-     * Metoda tworzy ilosc mobow podanych przez uzytkownika przy pomocy metody
-     * @see Board#createRandomMob()
-     * a nastepnie przy pomocy metod
-     * @see Board#getPositionX() i
-     * @see Board#getPositionY()
+     * Metoda tworzy ilosc mobow podanych przez uzytkownika a nastepnie przy pomocy
      * ustawia w randomowych miejscach na planszy
+     * @see Board#createRandomMob()
+     * @see Board#getPositionX()
+     * @see Board#getPositionY()
      */
 
     @Override
@@ -151,10 +154,10 @@ public class Board implements IRandom {
     }
 
     /**
-     * Metoda tworzy nowe materialy a nastepnie przy pomocy metod
-     * @see Board#getPositionX() i
+     * Metoda tworzy nowe materialy i ustawia je w randomowych miejscach na planszy
+     * @see Board#getPositionX()
      * @see Board#getPositionY()
-     * ustawia w randomowych miejscach na planszy
+     *
      */
 
     @Override
@@ -177,7 +180,9 @@ public class Board implements IRandom {
         }
     }
 
-
+    /**
+     * Metoda tworzy nowa plansze a nastepnie ustawia na niej moby i materialy
+     */
     public void placeOnTheBoard(){
         createArray();
         setMobPosition();
@@ -203,17 +208,17 @@ public class Board implements IRandom {
     }
 
     /**
-     * Metoda uzywajac metody
-     * @see Board#lookForMobs() szuka miejsc na ktorych wystepuja moby
-     * nastepnie uzywajac w petli uzywajac metod
-     * @see Board#getPositionX() losuje nowa kordynate X dla wybranego moba
-     * @see Board#getPositionY() losuje nowa kordynate Y dla wybranego moba
-     * nastepnie sprawdza czy nowe kordynaty sa puste czy systepuje na nich jakis mob/metrial
-     * jesli na na nowych kordyjatach znajduje sie material uzywa metody
-     * --------update zrobic jak abstract material sie zrobi---------
-     * jesli na nowych kordynatach znajduje sie mob takiej samej klasy uzywa metody
+     * Metoda uzywajac metody <p>lookForMobs</p> szuka miejsc na ktorych wystepuja moby
+     * nastepnie uzywajac w petli uzywajac metod <p>getPositionX</p> i <p>getPositionY</p>
+     * losuje nowe kordynaty  dla wybranego moba nastepnie sprawdza czy nowe kordynaty sa puste
+     * czy wystepuje na nich jakis mob/metrial
+     * jesli na na nowych kordyjatach znajduje sie material uzywa metody <p>collectMaterial</p>
+     * jesli na nowych kordynatach znajduje sie mob takiej samej klasy uzywa metody <p>merge</p>
+     * jesli na nowych kordynatach znajduje sie mob innej klasy uzywa metody <p>fight</p>
+     * @see Board#lookForMobs()
+     * @see Board#getPositionX()
+     * @see Board#getPositionY()
      * @see AbstractMonster#merge(AbstractMonster, AbstractMonster) i z 2 mobow powstaje jeden silniejszy
-     * jesli na nowych kordynatach znajduje sie mob innej klasy uzywa metody
      * @see AbstractMonster#fight(AbstractMonster, AbstractMonster) ktora zwraca wygranego moba
      */
 
@@ -240,7 +245,6 @@ public class Board implements IRandom {
 
                 playBoard[newPositionX][newPositionX] = playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]];
                 playBoard[aliveMobsXCord[i]][aliveMobsYCord[i]] = null;
-
 
 
             } else if (playBoard[newPositionX][newPositionY] instanceof AbstractMonster) {
@@ -332,7 +336,6 @@ public class Board implements IRandom {
         sB.append(nrOfElfs);
         sB.append("\n Ilosc Zywych Karlow: ");
         sB.append(nrOfDwarfs);
-
 
         return sB.toString();
     }
