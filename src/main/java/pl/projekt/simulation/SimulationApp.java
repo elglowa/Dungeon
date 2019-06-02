@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,8 +42,9 @@ public class SimulationApp {
                 } else break;
             } while (true);
 
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getCause().getMessage());
+        } catch (InputMismatchException e) {
+            System.out.println("Zamias liczby wpisales znak/lub liczbe w zlym formacie");
+            getMapSize();
         }
     }
 
@@ -52,18 +54,19 @@ public class SimulationApp {
      */
 
     private void getNumberOfMobs(){
-        try (Scanner scan = new Scanner(System.in)) {
-            do {
-                System.out.println("Podaj ilosc mobow (musi byc mniejsza niz wielkosc mapy)");
-                numberOfMobs = scan.nextInt();
-                if (numberOfMobs > (mapSize * mapSize)) {
-                    System.out.println("ilosc Mobow > Mapa");
-                } else break;
-            } while (true);
-
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getCause().getMessage());
-        }
+        Scanner scan = new Scanner(System.in);
+            try  {
+                do {
+                    System.out.println("Podaj ilosc mobow (musi byc mniejsza niz wielkosc mapy^2)");
+                    numberOfMobs = scan.nextInt();
+                    if (numberOfMobs > (mapSize * mapSize)) {
+                        System.out.println("ilosc Mobow > Mapa");
+                    } else break;
+                } while (true);
+            } catch (InputMismatchException e) {
+                System.out.println("Zamias liczby wpisales znak/lub liczbe w zlym formacie");
+                getNumberOfMobs();
+            }
     }
 
     /**
@@ -121,11 +124,11 @@ public class SimulationApp {
         creatGameBoard();
         gameBoard.placeOnTheBoard();
         createNewFile();
-        infoToDisplay.add(gameBoard.getInfo());
+        infoToDisplay.add("1. " + gameBoard.getInfo());
         do{
             if(gameBoard.onlyOneSpeciesLeft()) break;
             gameBoard.move();
-            infoToDisplay.add(gameBoard.getInfo());
+            infoToDisplay.add((i+2) + ". " +gameBoard.getInfo());
 
             i++;
         }while(i < 10);
