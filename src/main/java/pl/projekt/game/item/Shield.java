@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostęny dla wszystkich.Zwiększa nieznacznie
+ * zarówno hp,jak i defensywę.
+ */
 public class Shield extends AbstractItem
 {
     private AbstractMonster Mob1;

@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostępny wyłącznie dla Minotaura.Zwiększa on
+ * bardzo znacznie atak,za to zmiajsza nieznacznie hp oraz defensywę.
+ */
 public class Maze extends AbstractItem
 {
     private AbstractMonster Mob1;

@@ -2,6 +2,10 @@ package pl.projekt.game.item;
 
 import pl.projekt.game.mob.AbstractMonster;
 
+/**
+ * Przedmiot dostęny dla wszystkich.Nieznacznie zwiększa
+ * atak.
+ */
 public class Dagger extends AbstractItem
 {
     private AbstractMonster Mob1;
