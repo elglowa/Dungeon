@@ -41,7 +41,7 @@ public class Board implements IRandom {
      * Metoda tworzy nowa plansze o wymiarze podanym przez urzytkownika
      */
 
-    public void createArray() {
+    private void createArray() {
         if (size != 0) {
             playBoard = new Object[size][size];
         }

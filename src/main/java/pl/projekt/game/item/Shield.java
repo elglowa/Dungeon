@@ -29,9 +29,7 @@ public class Shield extends AbstractItem
      * @param armour przyjmuje double
      */
     @Override
-    public void addArmour(double armour) {
-        Mob1.addArmour(ArmourPoints+armour+Mob1.getDefence()*0.04);
-    }
+    public void addArmour(double armour) { Mob1.addArmour(ArmourPoints+armour+Mob1.getDefence()*0.04); }
 
     /**
      * metoda dodaje 2% aktualnych punktów hp moba,punkty hp Itemu oraz parametr hp

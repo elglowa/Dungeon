@@ -22,6 +22,7 @@ public class SimulationApp {
     private int mapSize;
     private Board gameBoard;
     private String fileName;
+
     /**
      * lista typu string przechowujaca dane do wypisania do pliku
      */
