@@ -38,6 +38,11 @@ public abstract class AbstractMonster implements IStats {
 
     private void setEqweight(int Eqweight) { this.Eqweight = Eqweight; }
 
+    //do testu
+    public int getWoodnmb(){ return this.Woodnmb; }
+    //do testu
+    public ArrayList<AbstractItem> getEquipment() { return Equipment; }
+
     /**
      * metoda zwiększa ilość posiadanych przez moba diamentów o 1
      */
