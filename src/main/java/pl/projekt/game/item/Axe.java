@@ -36,10 +36,8 @@ public class Axe extends AbstractItem
      * @param armour przyjmuje double
      */
     @Override
-    public void addArmour(double armour) { Mob1.addArmour(armour+Mob1.getDefence()*(-0.03)); }
+    public void addArmour(double armour) { Mob1.addArmour(ArmourPoints+armour+Mob1.getDefence()*(-0.03)); }
 
     @Override
-    public void addHP(double hp) {
-
-    }
+    public void addHP(double hp) { Mob1.addHP(hp+HpPoints); }
 }
