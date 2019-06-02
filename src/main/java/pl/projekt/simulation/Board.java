@@ -208,13 +208,13 @@ public class Board implements IRandom {
     }
 
     /**
-     * Metoda uzywajac metody <p>lookForMobs</p> szuka miejsc na ktorych wystepuja moby
-     * nastepnie uzywajac w petli uzywajac metod <p>getPositionX</p> i <p>getPositionY</p>
+     * Metoda uzywajac metody lookForMobsszuka miejsc na ktorych wystepuja moby
+     * nastepnie uzywajac w petli uzywajac metod getPositionX i getPositionY
      * losuje nowe kordynaty  dla wybranego moba nastepnie sprawdza czy nowe kordynaty sa puste
      * czy wystepuje na nich jakis mob/metrial
-     * jesli na na nowych kordyjatach znajduje sie material uzywa metody <p>collectMaterial</p>
-     * jesli na nowych kordynatach znajduje sie mob takiej samej klasy uzywa metody <p>merge</p>
-     * jesli na nowych kordynatach znajduje sie mob innej klasy uzywa metody <p>fight</p>
+     * jesli na na nowych kordyjatach znajduje sie material uzywa metody collectMaterial
+     * jesli na nowych kordynatach znajduje sie mob takiej samej klasy uzywa metody merge
+     * jesli na nowych kordynatach znajduje sie mob innej klasy uzywa metody fight
      * @see Board#lookForMobs()
      * @see Board#getPositionX()
      * @see Board#getPositionY()

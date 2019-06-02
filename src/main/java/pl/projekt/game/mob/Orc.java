@@ -29,13 +29,23 @@ public class Orc extends AbstractMonster{
     }
 
     @Override
-    public void addArmour(double armr) { super.addArmour(armr); }
+    public void addAttack(double attack) { this.attacPoints +=attack; }
 
     @Override
-    public void addHP(double HP) { super.addHP(HP); }
+    public void addArmour(double armr) { this.defencePoints += armr; }
 
     @Override
-    public void addAttack(double attack) { super.addAttack(attack); }
+    public void addHP(double HP) { this.healthPoints += HP; }
+
+    public double getAttack(){ return attacPoints; }
+
+    public double getDefence() { return defencePoints; }
+
+    public double getHealth() { return healthPoints; }
+
+    private int getEqweight() { return Eqweight; }
+
+
 
     /**
      * metoda zwiększa ilość posiadanego przez moba kamienia o 1

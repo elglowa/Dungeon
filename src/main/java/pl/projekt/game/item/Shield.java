@@ -42,7 +42,5 @@ public class Shield extends AbstractItem
     }
 
     @Override
-    public void addAttack(double attack) {
-
-    }
+    public void addAttack(double attack) { Mob1.addAttack(attack+DamagePoints); }
 }

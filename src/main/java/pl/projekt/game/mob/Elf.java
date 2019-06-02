@@ -37,6 +37,15 @@ public class Elf extends AbstractMonster {
     @Override
     public void addHP(double HP) { this.healthPoints += HP; }
 
+    @Override
+    public double getAttack() { return attacPoints; }
+
+    @Override
+    public double getHealth() { return healthPoints; }
+
+    @Override
+    public double getDefence() { return defencePoints; }
+
     /**
      * Zwiększa ilość posiadanego przez moba żelaza o 1
      */

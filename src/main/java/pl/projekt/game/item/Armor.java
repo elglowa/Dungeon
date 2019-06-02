@@ -24,8 +24,7 @@ public class Armor extends AbstractItem
     }
 
     @Override
-    public void addAttack(double attack) {
-    }
+    public void addAttack(double attack) { Mob1.addAttack(attack+DamagePoints); }
 
     /**
      * metoda dodaje 5% aktualnych punktów hp moba,punkty hp Itemu oraz parametr hp

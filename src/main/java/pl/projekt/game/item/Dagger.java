@@ -31,12 +31,8 @@ public class Dagger extends AbstractItem
     public void addAttack(double attack) { Mob1.addAttack(DamagePoints+attack+Mob1.getAttack()*0.03); }
 
     @Override
-    public void addHP(double hp) {
-
-    }
+    public void addHP(double hp) { Mob1.addHP(hp+HpPoints); }
 
     @Override
-    public void addArmour(double armour) {
-
-    }
+    public void addArmour(double armour) { Mob1.addArmour(armour+ArmourPoints); }
 }
