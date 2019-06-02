@@ -16,6 +16,8 @@ public class ArmorTest {
     AbstractItem A4 = new Armor(M4);
 
 
+    //FORMUŁA:Parametr Wpisywany+Punkty Statystyk Itemu+Bonus Procentowy
+
     @Test
     public void addAttack() {
         A1.addAttack(0);
