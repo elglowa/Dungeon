@@ -33,7 +33,7 @@ public class Minotaur extends AbstractMonster{
     public void addAttack(double attack) { this.attacPoints +=attack; }
 
     @Override
-    public void addArmour(double armr) { this.defencePoints += armr;}
+    public void addArmour(double armr) { this.defencePoints += armr; }
 
     @Override
     public void addHP(double HP) { this.healthPoints += HP; }

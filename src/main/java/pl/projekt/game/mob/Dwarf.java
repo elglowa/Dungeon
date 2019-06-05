@@ -29,13 +29,13 @@ public class Dwarf extends AbstractMonster{
         }
 
         @Override
-        public void addHP(double HP) { this.healthPoints += HP; }
+        public void addAttack(double attack) { this.attacPoints +=attack; }
 
         @Override
         public void addArmour(double armr) { this.defencePoints += armr; }
 
         @Override
-        public void addAttack(double attack) { this.attacPoints +=attack; }
+        public void addHP(double HP) { this.healthPoints += HP; }
 
         @Override
         public double getAttack() { return attacPoints; }
