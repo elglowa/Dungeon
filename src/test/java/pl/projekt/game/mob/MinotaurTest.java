@@ -31,4 +31,5 @@ public class MinotaurTest {
         }while(true);
         Assert.assertEquals("pl.projekt.game.item.Jewelery",M1.getEquipment().get(0).getClass().getName());
     }
+
 }

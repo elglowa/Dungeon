@@ -36,12 +36,15 @@ public class Board implements IRandom {
         this.mobs = mobs;
     }
 
+    //dotestu
+    public int getAliveMobs() { return aliveMobs; }
 
     /**
      * Metoda tworzy nowa plansze o wymiarze podanym przez urzytkownika
      */
 
-    private void createArray() {
+    //public z pwodu testu
+    public void createArray() {
         if (size != 0) {
             playBoard = new Object[size][size];
         }
